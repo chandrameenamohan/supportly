@@ -1,40 +1,91 @@
-# Supportly README
+# Supportly
+
+Supportly is an AI-powered customer support platform that routes customer inquiries to specialized agents based on intent.
+
+## Features
+
+- **Multi-Agent Architecture**: Routes customer inquiries to specialized agents
+- **Intent Classification**: Automatically determines customer needs
+- **Domain-Specific Agents**: Specialized handling for orders, products, and knowledge base queries
+- **Web Client Interface**: User-friendly chat interface
 
 ## Installation
 
-### Install the python libraries:
-> pip install -r requirements.txt
+### 1. Backend Setup
 
-### Set your LLM vendor and model in the config.py file:
-**Note that you may need to edit the llm_factory.py file to edit the llm initialization paremeters for openai and anthropic, I've only tested it with azure so far.**
-> LLM_VENDOR = "openai"
-> LLM_MODEL = "gpt-4o"
+#### Install Python Dependencies
+```bash
+pip install -r requirements.txt
+```
 
-### Set your API Keys in your .env file:
-> OPENAI_API_KEY = "your-openai-api-key"
-> AZURE_OPENAI_API_KEY = "your-azure-openai-api-key"
+#### Configure LLM Settings
+Edit the `config.py` file to set your LLM vendor and model:
+```python
+LLM_VENDOR = "openai"  # Options: "openai", "azure", "anthropic"
+LLM_MODEL = "gpt-4o"   # Model name for your selected vendor
+```
 
-### Install the database:
-**This will create a sqlite database in the root directory of the project.**
-> python initialize_db.py
+**Note:** You may need to modify `llm_factory.py` to adjust LLM initialization parameters for your specific provider, the Azure initialization is the only one that has been tested.
 
-### Install npm libraries for client:
-> cd ai-chat-client
-> npm install
+#### Set API Keys
+Create a `.env` file in the project root with your API keys:
+```
+OPENAI_API_KEY = "your-openai-api-key"
+AZURE_OPENAI_API_KEY = "your-azure-openai-api-key"
+ANTHROPIC_API_KEY = "your-anthropic-api-key"
+```
 
-## Run the python server
+#### Initialize Database
+This creates a SQLite database in the project root, named db.sqlite.
+```bash
+python initialize_db.py
+```
+
+### 2. Frontend Setup
+
+#### Install NPM Dependencies
+```bash
+cd ai-chat-client
+npm install
+```
+
+## Running the Application
+
+### Start the Backend Server
+```bash
 uvicorn api:app --reload
+```
 
-## Run the web client
-> cd ai-chat-client
-> npm start
+### Start the Web Client
+```bash
+cd ai-chat-client
+npm start
+```
 
-## Files to modify
-- agents/orders_agent.py (Where you will implement the order assistant functionality)
-- agents/products_agent.py (Where you will implement the product assistant functionality)
-- agents/orchestrator_agent.py (Where you will implement the classifier/intent routing functionality)
-- agents/greeting_agent.py (Where you will implement the greeting functionality)
-- agents/knowledge_agent.py (Where you will implement the rag/knowledge assistant functionality)
+## Development Guide
+
+### Key Components to Modify
+
+| Component | File | Purpose |
+|-----------|------|---------|
+| Orchestrator | `agents/orchestrator_agent.py` | Intent classification and routing |
+| Greeting Agent | `agents/greeting_agent.py` | Initial customer interaction |
+| Orders Agent | `agents/orders_agent.py` | Order-related inquiries |
+| Products Agent | `agents/products_agent.py` | Product information requests |
+| Knowledge Agent | `agents/knowledge_agent.py` | RAG-based knowledge retrieval |
+
+## Architecture
+
+Supportly uses a multi-agent architecture where the orchestrator classifies user intent and routes to specialized agents:
+
+1. **User Request** → Web Client → API
+2. **Orchestrator** determines intent
+3. **Specialized Agent** (Orders/Products/Knowledge) handles the request
+4. **Response** returned to user
+
+## License
+
+[Your license information here]
 
 
 
