@@ -83,6 +83,11 @@ Supportly uses a multi-agent architecture where the orchestrator classifies user
 3. **Specialized Agent** (Orders/Products/Knowledge) handles the request
 4. **Response** returned to user
 
+## Debug 
+In visual code or cursor we can run and debug the code using Run and Debug Feature of it.
+There is launch.json which you can use.
+Follow this video to check on how to run: https://www.youtube.com/watch?v=3HiLLByBWkg
+
 ## License
 
 [Your license information here]
