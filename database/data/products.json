@@ -1,0 +1,1121 @@
+[
+  {
+    "id": "dc2ea37f-e341-43ae-8629-2a367713a9a2",
+    "sku": "NIKE-06-0001",
+    "name": "Nike Air Zoom Pegasus",
+    "description": "Responsive cushioning for your daily runs.\n\nFeatures:\n\u2022 Breathable mesh upper keeps feet cool\n\u2022 Responsive cushioning for a smooth ride\n\u2022 Flexible grooves allow natural foot movement\n\u2022 Reflective details for visibility in low light",
+    "brand_id": 1,
+    "category_id": 6,
+    "price": 129.26,
+    "sale_price": 107.33,
+    "is_on_sale": true,
+    "is_featured": false,
+    "is_active": true,
+    "attributes": {
+      "gender": "Men",
+      "materials": [
+        "Gore-Tex",
+        "Cotton"
+      ],
+      "features": [
+        "Flexible grooves allow natural foot movement",
+        "Responsive cushioning for a smooth ride",
+        "Reflective details for visibility in low light",
+        "Strategic rubber placement for durability and traction"
+      ],
+      "specifications": {
+        "weight": "288 g",
+        "heel_drop": "3 mm",
+        "arch_support": "Minimal",
+        "closure": "Lace-up",
+        "outsole": "Blown rubber",
+        "midsole": "EVA"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/NIKE-06-0001_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/NIKE-06-0001_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/NIKE-06-0001_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "nike",
+        "air zoom pegasus",
+        "running",
+        "men",
+        "gore-tex",
+        "cotton"
+      ]
+    }
+  },
+  {
+    "id": "46f7ea03-fd5c-48a4-8bb2-48fc4d33ab12",
+    "sku": "NIKE-06-0002",
+    "name": "Nike ZoomX Invincible Run",
+    "description": "Maximum cushioning for long-distance comfort.\n\nFeatures:\n\u2022 Strategic rubber placement for durability and traction\n\u2022 Flexible grooves allow natural foot movement\n\u2022 Heel collar wraps ankle for comfortable fit\n\u2022 Reflective details for visibility in low light",
+    "brand_id": 1,
+    "category_id": 6,
+    "price": 113.77,
+    "sale_price": null,
+    "is_on_sale": false,
+    "is_featured": false,
+    "is_active": true,
+    "attributes": {
+      "gender": "Women",
+      "materials": [
+        "Fleece",
+        "Neoprene",
+        "Knit"
+      ],
+      "features": [
+        "Strategic rubber placement for durability and traction",
+        "Breathable mesh upper keeps feet cool",
+        "Flexible grooves allow natural foot movement",
+        "Responsive cushioning for a smooth ride"
+      ],
+      "specifications": {
+        "weight": "319 g",
+        "heel_drop": "9 mm",
+        "arch_support": "Support",
+        "closure": "Buckle",
+        "outsole": "Gum rubber",
+        "midsole": "Foam"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/NIKE-06-0002_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/NIKE-06-0002_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/NIKE-06-0002_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "nike",
+        "zoomx invincible run",
+        "running",
+        "women",
+        "fleece",
+        "neoprene",
+        "knit"
+      ]
+    }
+  },
+  {
+    "id": "39b161a9-5d0e-4ccb-b048-8adac07eeb80",
+    "sku": "NIKE-06-0003",
+    "name": "Nike Air Zoom Tempo",
+    "description": "Responsive and fast for tempo runs and race day.\n\nFeatures:\n\u2022 Strategic rubber placement for durability and traction\n\u2022 Reflective details for visibility in low light\n\u2022 Responsive cushioning for a smooth ride",
+    "brand_id": 1,
+    "category_id": 6,
+    "price": 176.28,
+    "sale_price": null,
+    "is_on_sale": false,
+    "is_featured": false,
+    "is_active": true,
+    "attributes": {
+      "gender": "Men",
+      "materials": [
+        "Cotton",
+        "Knit"
+      ],
+      "features": [
+        "Responsive cushioning for a smooth ride",
+        "Reflective details for visibility in low light",
+        "Strategic rubber placement for durability and traction",
+        "Breathable mesh upper keeps feet cool"
+      ],
+      "specifications": {
+        "weight": "395 g",
+        "heel_drop": "0 mm",
+        "arch_support": "Minimal",
+        "closure": "Buckle",
+        "outsole": "Blown rubber",
+        "midsole": "Foam"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/NIKE-06-0003_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/NIKE-06-0003_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/NIKE-06-0003_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "nike",
+        "air zoom tempo",
+        "running",
+        "men",
+        "cotton",
+        "knit"
+      ]
+    }
+  },
+  {
+    "id": "fc5393ad-2418-4a19-bed9-d668d8f02306",
+    "sku": "NIKE-06-0004",
+    "name": "Nike React Infinity Run",
+    "description": "Designed to help reduce injury with smooth transitions.\n\nFeatures:\n\u2022 Responsive cushioning for a smooth ride\n\u2022 Heel collar wraps ankle for comfortable fit\n\u2022 Flexible grooves allow natural foot movement",
+    "brand_id": 1,
+    "category_id": 6,
+    "price": 162.97,
+    "sale_price": null,
+    "is_on_sale": false,
+    "is_featured": false,
+    "is_active": true,
+    "attributes": {
+      "gender": "Women",
+      "materials": [
+        "Rubber",
+        "Synthetic Leather",
+        "Canvas"
+      ],
+      "features": [
+        "Reflective details for visibility in low light",
+        "Heel collar wraps ankle for comfortable fit",
+        "Flexible grooves allow natural foot movement"
+      ],
+      "specifications": {
+        "weight": "369 g",
+        "heel_drop": "1 mm",
+        "arch_support": "Neutral",
+        "closure": "Hook-and-loop",
+        "outsole": "Carbon rubber",
+        "midsole": "React"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/NIKE-06-0004_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/NIKE-06-0004_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/NIKE-06-0004_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "nike",
+        "react infinity run",
+        "running",
+        "women",
+        "rubber",
+        "synthetic leather",
+        "canvas"
+      ]
+    }
+  },
+  {
+    "id": "d1c7c928-5738-42ae-bba2-93abbc4e982f",
+    "sku": "NIKE-07-0005",
+    "name": "Nike LeBron Witness",
+    "description": "Responsive cushioning and support for the court.\n\nFeatures:\n\u2022 Reinforced toe cap for durability\n\u2022 Lightweight design for quick movements",
+    "brand_id": 1,
+    "category_id": 7,
+    "price": 152.95,
+    "sale_price": 94.54,
+    "is_on_sale": true,
+    "is_featured": false,
+    "is_active": true,
+    "attributes": {
+      "gender": "Men",
+      "materials": [
+        "Suede",
+        "Rubber",
+        "Cotton"
+      ],
+      "features": [
+        "Multidirectional traction pattern for court grip",
+        "High-top design offers ankle support",
+        "Padded collar for comfort during play",
+        "Reinforced toe cap for durability"
+      ],
+      "specifications": {
+        "weight": "247 g",
+        "heel_drop": "9 mm",
+        "arch_support": "Neutral",
+        "closure": "Slip-on",
+        "outsole": "Blown rubber",
+        "midsole": "Air"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/NIKE-07-0005_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/NIKE-07-0005_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/NIKE-07-0005_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "nike",
+        "lebron witness",
+        "basketball",
+        "men",
+        "suede",
+        "rubber",
+        "cotton"
+      ]
+    }
+  },
+  {
+    "id": "f93e47be-3ffe-49f5-b019-c5707d7f6b6a",
+    "sku": "NIKE-07-0006",
+    "name": "Nike Kyrie Flytrap",
+    "description": "Quick cuts and responsive feel for dynamic players.\n\nFeatures:\n\u2022 Multidirectional traction pattern for court grip\n\u2022 High-top design offers ankle support\n\u2022 Zoom Air units provide responsive cushioning\n\u2022 Padded collar for comfort during play",
+    "brand_id": 1,
+    "category_id": 7,
+    "price": 165.62,
+    "sale_price": null,
+    "is_on_sale": false,
+    "is_featured": false,
+    "is_active": true,
+    "attributes": {
+      "gender": "Men",
+      "materials": [
+        "Nylon"
+      ],
+      "features": [
+        "Multidirectional traction pattern for court grip",
+        "High-top design offers ankle support",
+        "Padded collar for comfort during play"
+      ],
+      "specifications": {
+        "weight": "296 g",
+        "heel_drop": "1 mm",
+        "arch_support": "Support",
+        "closure": "Hook-and-loop",
+        "outsole": "Carbon rubber",
+        "midsole": "Air"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/NIKE-07-0006_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/NIKE-07-0006_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/NIKE-07-0006_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "nike",
+        "kyrie flytrap",
+        "basketball",
+        "men",
+        "nylon"
+      ]
+    }
+  },
+  {
+    "id": "67819063-76a6-4095-b704-2a2785202c49",
+    "sku": "NIKE-07-0007",
+    "name": "Nike Zoom Freak",
+    "description": "Designed for versatile forwards with responsive cushioning.\n\nFeatures:\n\u2022 Reinforced toe cap for durability\n\u2022 Lightweight design for quick movements",
+    "brand_id": 1,
+    "category_id": 7,
+    "price": 144.8,
+    "sale_price": null,
+    "is_on_sale": false,
+    "is_featured": false,
+    "is_active": true,
+    "attributes": {
+      "gender": "Men",
+      "materials": [
+        "Canvas",
+        "Cotton",
+        "Rubber"
+      ],
+      "features": [
+        "Padded collar for comfort during play",
+        "Reinforced toe cap for durability",
+        "Lightweight design for quick movements",
+        "Multidirectional traction pattern for court grip"
+      ],
+      "specifications": {
+        "weight": "355 g",
+        "heel_drop": "8 mm",
+        "arch_support": "Minimal",
+        "closure": "Hook-and-loop",
+        "outsole": "Gum rubber",
+        "midsole": "Boost"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/NIKE-07-0007_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/NIKE-07-0007_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/NIKE-07-0007_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "nike",
+        "zoom freak",
+        "basketball",
+        "men",
+        "canvas",
+        "cotton",
+        "rubber"
+      ]
+    }
+  },
+  {
+    "id": "e7418031-5462-4441-8824-663b56c6e28a",
+    "sku": "NIKE-11-0008",
+    "name": "Nike Air Force 1",
+    "description": "Classic style with premium leather upper.",
+    "brand_id": 1,
+    "category_id": 11,
+    "price": 61.02,
+    "sale_price": null,
+    "is_on_sale": false,
+    "is_featured": false,
+    "is_active": true,
+    "attributes": {
+      "gender": "Men",
+      "materials": [
+        "Canvas",
+        "Cotton",
+        "Nylon"
+      ],
+      "features": [
+        "Classic design for everyday style",
+        "Durable construction for long-lasting wear"
+      ],
+      "specifications": {
+        "weight": "432 g",
+        "heel_drop": "6 mm",
+        "arch_support": "Neutral",
+        "closure": "Slip-on",
+        "outsole": "Gum rubber",
+        "midsole": "Foam"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/NIKE-11-0008_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/NIKE-11-0008_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/NIKE-11-0008_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "nike",
+        "air force 1",
+        "sneakers",
+        "men",
+        "canvas",
+        "cotton",
+        "nylon"
+      ]
+    }
+  },
+  {
+    "id": "1bf06ade-a51c-46c4-b02d-1440b0dafc6f",
+    "sku": "NIKE-11-0009",
+    "name": "Nike Air Max 90",
+    "description": "Iconic design with visible Air cushioning.",
+    "brand_id": 1,
+    "category_id": 11,
+    "price": 105.49,
+    "sale_price": null,
+    "is_on_sale": false,
+    "is_featured": false,
+    "is_active": true,
+    "attributes": {
+      "gender": "Women",
+      "materials": [
+        "Polyester",
+        "Gore-Tex"
+      ],
+      "features": [
+        "Classic design for everyday style",
+        "Versatile design pairs with multiple outfits",
+        "Iconic silhouette with heritage details",
+        "Cushioned insole for all-day comfort"
+      ],
+      "specifications": {
+        "weight": "380 g",
+        "heel_drop": "0 mm",
+        "arch_support": "Minimal",
+        "closure": "Lace-up",
+        "outsole": "Blown rubber",
+        "midsole": "React"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/NIKE-11-0009_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/NIKE-11-0009_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/NIKE-11-0009_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "nike",
+        "air max 90",
+        "sneakers",
+        "women",
+        "polyester",
+        "gore-tex"
+      ]
+    }
+  },
+  {
+    "id": "571b9e38-67e7-4f45-a0a8-08f2f4acab15",
+    "sku": "NIKE-11-0010",
+    "name": "Nike Blazer Mid",
+    "description": "Vintage basketball style for everyday wear.",
+    "brand_id": 1,
+    "category_id": 11,
+    "price": 96.87,
+    "sale_price": 83.73,
+    "is_on_sale": true,
+    "is_featured": false,
+    "is_active": true,
+    "attributes": {
+      "gender": "Men",
+      "materials": [
+        "Suede",
+        "Cotton",
+        "Nylon"
+      ],
+      "features": [
+        "Classic design for everyday style",
+        "Cushioned insole for all-day comfort"
+      ],
+      "specifications": {
+        "weight": "204 g",
+        "heel_drop": "12 mm",
+        "arch_support": "Support",
+        "closure": "Lace-up",
+        "outsole": "Gum rubber",
+        "midsole": "Gel"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/NIKE-11-0010_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/NIKE-11-0010_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/NIKE-11-0010_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "nike",
+        "blazer mid",
+        "sneakers",
+        "men",
+        "suede",
+        "cotton",
+        "nylon"
+      ]
+    }
+  },
+  {
+    "id": "d87f1126-c558-4c26-828d-3f65fae5a72a",
+    "sku": "ADID-06-0011",
+    "name": "Adidas Ultraboost",
+    "description": "Responsive Boost cushioning for energy return.\n\nFeatures:\n\u2022 Flexible grooves allow natural foot movement\n\u2022 Breathable mesh upper keeps feet cool\n\u2022 Heel collar wraps ankle for comfortable fit",
+    "brand_id": 2,
+    "category_id": 6,
+    "price": 106.69,
+    "sale_price": null,
+    "is_on_sale": false,
+    "is_featured": false,
+    "is_active": true,
+    "attributes": {
+      "gender": "Men",
+      "materials": [
+        "Knit",
+        "Wool",
+        "Synthetic Leather"
+      ],
+      "features": [
+        "Breathable mesh upper keeps feet cool",
+        "Strategic rubber placement for durability and traction",
+        "Reflective details for visibility in low light"
+      ],
+      "specifications": {
+        "weight": "217 g",
+        "heel_drop": "6 mm",
+        "arch_support": "Neutral",
+        "closure": "Lace-up",
+        "outsole": "Rubber",
+        "midsole": "EVA"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/ADID-06-0011_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/ADID-06-0011_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/ADID-06-0011_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "adidas",
+        "ultraboost",
+        "running",
+        "men",
+        "knit",
+        "wool",
+        "synthetic leather"
+      ]
+    }
+  },
+  {
+    "id": "8f745f86-03b1-4d55-ba5b-48b02cd1a54a",
+    "sku": "ADID-06-0012",
+    "name": "Adidas Supernova",
+    "description": "Balanced cushioning for everyday training runs.\n\nFeatures:\n\u2022 Responsive cushioning for a smooth ride\n\u2022 Heel collar wraps ankle for comfortable fit",
+    "brand_id": 2,
+    "category_id": 6,
+    "price": 153.3,
+    "sale_price": null,
+    "is_on_sale": false,
+    "is_featured": false,
+    "is_active": true,
+    "attributes": {
+      "gender": "Women",
+      "materials": [
+        "Fleece",
+        "Rubber",
+        "Suede"
+      ],
+      "features": [
+        "Reflective details for visibility in low light",
+        "Flexible grooves allow natural foot movement"
+      ],
+      "specifications": {
+        "weight": "288 g",
+        "heel_drop": "3 mm",
+        "arch_support": "Support",
+        "closure": "Hook-and-loop",
+        "outsole": "Gum rubber",
+        "midsole": "Gel"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/ADID-06-0012_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/ADID-06-0012_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/ADID-06-0012_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "adidas",
+        "supernova",
+        "running",
+        "women",
+        "fleece",
+        "rubber",
+        "suede"
+      ]
+    }
+  },
+  {
+    "id": "a87533eb-d685-4e08-8706-75391f252cdf",
+    "sku": "ADID-06-0013",
+    "name": "Adidas Adizero Adios",
+    "description": "Lightweight and fast for race day performance.\n\nFeatures:\n\u2022 Breathable mesh upper keeps feet cool\n\u2022 Heel collar wraps ankle for comfortable fit\n\u2022 Flexible grooves allow natural foot movement\n\u2022 Strategic rubber placement for durability and traction",
+    "brand_id": 2,
+    "category_id": 6,
+    "price": 153.83,
+    "sale_price": 113.51,
+    "is_on_sale": true,
+    "is_featured": false,
+    "is_active": true,
+    "attributes": {
+      "gender": "Men",
+      "materials": [
+        "Polyester",
+        "Canvas"
+      ],
+      "features": [
+        "Strategic rubber placement for durability and traction",
+        "Flexible grooves allow natural foot movement",
+        "Responsive cushioning for a smooth ride",
+        "Heel collar wraps ankle for comfortable fit"
+      ],
+      "specifications": {
+        "weight": "271 g",
+        "heel_drop": "3 mm",
+        "arch_support": "Neutral",
+        "closure": "Lace-up",
+        "outsole": "Carbon rubber",
+        "midsole": "EVA"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/ADID-06-0013_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/ADID-06-0013_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/ADID-06-0013_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "adidas",
+        "adizero adios",
+        "running",
+        "men",
+        "polyester",
+        "canvas"
+      ]
+    }
+  },
+  {
+    "id": "1061e89e-4d51-421c-9b6b-86b6f4b387af",
+    "sku": "ADID-08-0014",
+    "name": "Adidas Predator Edge",
+    "description": "Enhanced ball control and striking power.",
+    "brand_id": 2,
+    "category_id": 8,
+    "price": 166.55,
+    "sale_price": null,
+    "is_on_sale": false,
+    "is_featured": false,
+    "is_active": true,
+    "attributes": {
+      "gender": "Men",
+      "materials": [
+        "Fleece",
+        "Suede"
+      ],
+      "features": [
+        "Classic design for everyday style",
+        "Durable construction for long-lasting wear"
+      ],
+      "specifications": {
+        "weight": "411 g",
+        "heel_drop": "10 mm",
+        "arch_support": "Minimal",
+        "closure": "Lace-up",
+        "outsole": "Rubber",
+        "midsole": "React"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/ADID-08-0014_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/ADID-08-0014_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/ADID-08-0014_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "adidas",
+        "predator edge",
+        "soccer",
+        "men",
+        "fleece",
+        "suede"
+      ]
+    }
+  },
+  {
+    "id": "8e08d47e-48a6-4f44-874e-c9861188fa5a",
+    "sku": "ADID-08-0015",
+    "name": "Adidas X Speedflow",
+    "description": "Ultralight speed for the fastest players.",
+    "brand_id": 2,
+    "category_id": 8,
+    "price": 103.61,
+    "sale_price": null,
+    "is_on_sale": false,
+    "is_featured": false,
+    "is_active": true,
+    "attributes": {
+      "gender": "Men",
+      "materials": [
+        "Wool",
+        "Leather"
+      ],
+      "features": [
+        "Durable construction for long-lasting wear",
+        "Cushioned insole for all-day comfort"
+      ],
+      "specifications": {
+        "weight": "248 g",
+        "heel_drop": "2 mm",
+        "arch_support": "Neutral",
+        "closure": "Lace-up",
+        "outsole": "Rubber",
+        "midsole": "EVA"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/ADID-08-0015_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/ADID-08-0015_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/ADID-08-0015_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "adidas",
+        "x speedflow",
+        "soccer",
+        "men",
+        "wool",
+        "leather"
+      ]
+    }
+  },
+  {
+    "id": "84f7a720-ef6e-466c-b1be-06b9ec98615b",
+    "sku": "ADID-08-0016",
+    "name": "Adidas Copa Sense",
+    "description": "Premium touch and comfort for technical players.",
+    "brand_id": 2,
+    "category_id": 8,
+    "price": 143.22,
+    "sale_price": 115.07,
+    "is_on_sale": true,
+    "is_featured": true,
+    "is_active": true,
+    "attributes": {
+      "gender": "Men",
+      "materials": [
+        "Nylon"
+      ],
+      "features": [
+        "Iconic silhouette with heritage details",
+        "Durable construction for long-lasting wear",
+        "Classic design for everyday style"
+      ],
+      "specifications": {
+        "weight": "250 g",
+        "heel_drop": "3 mm",
+        "arch_support": "Neutral",
+        "closure": "Hook-and-loop",
+        "outsole": "Carbon rubber",
+        "midsole": "React"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/ADID-08-0016_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/ADID-08-0016_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/ADID-08-0016_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "adidas",
+        "copa sense",
+        "soccer",
+        "men",
+        "nylon"
+      ]
+    }
+  },
+  {
+    "id": "5734fb90-f43b-4c7f-ba57-759b239cedff",
+    "sku": "ADID-11-0017",
+    "name": "Adidas Stan Smith",
+    "description": "Classic tennis style with a clean, minimalist design.",
+    "brand_id": 2,
+    "category_id": 11,
+    "price": 102.83,
+    "sale_price": null,
+    "is_on_sale": false,
+    "is_featured": false,
+    "is_active": true,
+    "attributes": {
+      "gender": "Women",
+      "materials": [
+        "Polyester",
+        "Canvas"
+      ],
+      "features": [
+        "Durable construction for long-lasting wear",
+        "Versatile design pairs with multiple outfits",
+        "Cushioned insole for all-day comfort"
+      ],
+      "specifications": {
+        "weight": "240 g",
+        "heel_drop": "11 mm",
+        "arch_support": "Neutral",
+        "closure": "Hook-and-loop",
+        "outsole": "Carbon rubber",
+        "midsole": "Gel"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/ADID-11-0017_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/ADID-11-0017_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/ADID-11-0017_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "adidas",
+        "stan smith",
+        "sneakers",
+        "women",
+        "polyester",
+        "canvas"
+      ]
+    }
+  },
+  {
+    "id": "9f2cfc23-7fc5-4cac-91d4-7d0b7638d5d9",
+    "sku": "ADID-11-0018",
+    "name": "Adidas Superstar",
+    "description": "Iconic shell toe design that's been a staple since 1970.",
+    "brand_id": 2,
+    "category_id": 11,
+    "price": 62.52,
+    "sale_price": null,
+    "is_on_sale": false,
+    "is_featured": false,
+    "is_active": true,
+    "attributes": {
+      "gender": "Men",
+      "materials": [
+        "Canvas",
+        "Gore-Tex",
+        "Cotton"
+      ],
+      "features": [
+        "Classic design for everyday style",
+        "Versatile design pairs with multiple outfits",
+        "Cushioned insole for all-day comfort"
+      ],
+      "specifications": {
+        "weight": "379 g",
+        "heel_drop": "4 mm",
+        "arch_support": "Neutral",
+        "closure": "Hook-and-loop",
+        "outsole": "Blown rubber",
+        "midsole": "Foam"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/ADID-11-0018_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/ADID-11-0018_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/ADID-11-0018_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "adidas",
+        "superstar",
+        "sneakers",
+        "men",
+        "canvas",
+        "gore-tex",
+        "cotton"
+      ]
+    }
+  },
+  {
+    "id": "71e1342d-7e6d-43f8-8f49-8eeb5f69ea94",
+    "sku": "ADID-11-0019",
+    "name": "Adidas Gazelle",
+    "description": "Vintage trainer with a sleek profile.",
+    "brand_id": 2,
+    "category_id": 11,
+    "price": 74.25,
+    "sale_price": null,
+    "is_on_sale": false,
+    "is_featured": true,
+    "is_active": true,
+    "attributes": {
+      "gender": "Women",
+      "materials": [
+        "Canvas",
+        "Rubber"
+      ],
+      "features": [
+        "Classic design for everyday style",
+        "Iconic silhouette with heritage details",
+        "Durable construction for long-lasting wear",
+        "Versatile design pairs with multiple outfits"
+      ],
+      "specifications": {
+        "weight": "446 g",
+        "heel_drop": "1 mm",
+        "arch_support": "Support",
+        "closure": "Lace-up",
+        "outsole": "Gum rubber",
+        "midsole": "Foam"
+      },
+      "care_instructions": "Wipe clean with a damp cloth. Air dry only. Do not machine wash."
+    },
+    "images": [
+      {
+        "url": "https://example.com/images/ADID-11-0019_1.jpg",
+        "is_primary": true
+      },
+      {
+        "url": "https://example.com/images/ADID-11-0019_2.jpg",
+        "is_primary": false
+      },
+      {
+        "url": "https://example.com/images/ADID-11-0019_3.jpg",
+        "is_primary": false
+      }
+    ],
+    "metadata": {
+      "search_keywords": [
+        "adidas",
+        "gazelle",
+        "sneakers",
+        "women",
+        "canvas",
+        "rubber"
+      ]
+    }
+  }
+]
