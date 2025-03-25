@@ -1,0 +1,560 @@
+[
+  {
+    "id": 1,
+    "product_id": "dc2ea37f-e341-43ae-8629-2a367713a9a2",
+    "related_product_id": "fc5393ad-2418-4a19-bed9-d668d8f02306",
+    "relation_type": "similar"
+  },
+  {
+    "id": 2,
+    "product_id": "dc2ea37f-e341-43ae-8629-2a367713a9a2",
+    "related_product_id": "46f7ea03-fd5c-48a4-8bb2-48fc4d33ab12",
+    "relation_type": "similar"
+  },
+  {
+    "id": 3,
+    "product_id": "dc2ea37f-e341-43ae-8629-2a367713a9a2",
+    "related_product_id": "39b161a9-5d0e-4ccb-b048-8adac07eeb80",
+    "relation_type": "similar"
+  },
+  {
+    "id": 4,
+    "product_id": "dc2ea37f-e341-43ae-8629-2a367713a9a2",
+    "related_product_id": "d87f1126-c558-4c26-828d-3f65fae5a72a",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 5,
+    "product_id": "dc2ea37f-e341-43ae-8629-2a367713a9a2",
+    "related_product_id": "8f745f86-03b1-4d55-ba5b-48b02cd1a54a",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 6,
+    "product_id": "dc2ea37f-e341-43ae-8629-2a367713a9a2",
+    "related_product_id": "67819063-76a6-4095-b704-2a2785202c49",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 7,
+    "product_id": "46f7ea03-fd5c-48a4-8bb2-48fc4d33ab12",
+    "related_product_id": "dc2ea37f-e341-43ae-8629-2a367713a9a2",
+    "relation_type": "similar"
+  },
+  {
+    "id": 8,
+    "product_id": "46f7ea03-fd5c-48a4-8bb2-48fc4d33ab12",
+    "related_product_id": "39b161a9-5d0e-4ccb-b048-8adac07eeb80",
+    "relation_type": "similar"
+  },
+  {
+    "id": 9,
+    "product_id": "46f7ea03-fd5c-48a4-8bb2-48fc4d33ab12",
+    "related_product_id": "fc5393ad-2418-4a19-bed9-d668d8f02306",
+    "relation_type": "similar"
+  },
+  {
+    "id": 10,
+    "product_id": "46f7ea03-fd5c-48a4-8bb2-48fc4d33ab12",
+    "related_product_id": "8f745f86-03b1-4d55-ba5b-48b02cd1a54a",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 11,
+    "product_id": "46f7ea03-fd5c-48a4-8bb2-48fc4d33ab12",
+    "related_product_id": "a87533eb-d685-4e08-8706-75391f252cdf",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 12,
+    "product_id": "46f7ea03-fd5c-48a4-8bb2-48fc4d33ab12",
+    "related_product_id": "67819063-76a6-4095-b704-2a2785202c49",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 13,
+    "product_id": "39b161a9-5d0e-4ccb-b048-8adac07eeb80",
+    "related_product_id": "dc2ea37f-e341-43ae-8629-2a367713a9a2",
+    "relation_type": "similar"
+  },
+  {
+    "id": 14,
+    "product_id": "39b161a9-5d0e-4ccb-b048-8adac07eeb80",
+    "related_product_id": "fc5393ad-2418-4a19-bed9-d668d8f02306",
+    "relation_type": "similar"
+  },
+  {
+    "id": 15,
+    "product_id": "39b161a9-5d0e-4ccb-b048-8adac07eeb80",
+    "related_product_id": "46f7ea03-fd5c-48a4-8bb2-48fc4d33ab12",
+    "relation_type": "similar"
+  },
+  {
+    "id": 16,
+    "product_id": "39b161a9-5d0e-4ccb-b048-8adac07eeb80",
+    "related_product_id": "d87f1126-c558-4c26-828d-3f65fae5a72a",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 17,
+    "product_id": "39b161a9-5d0e-4ccb-b048-8adac07eeb80",
+    "related_product_id": "8f745f86-03b1-4d55-ba5b-48b02cd1a54a",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 18,
+    "product_id": "39b161a9-5d0e-4ccb-b048-8adac07eeb80",
+    "related_product_id": "d1c7c928-5738-42ae-bba2-93abbc4e982f",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 19,
+    "product_id": "fc5393ad-2418-4a19-bed9-d668d8f02306",
+    "related_product_id": "dc2ea37f-e341-43ae-8629-2a367713a9a2",
+    "relation_type": "similar"
+  },
+  {
+    "id": 20,
+    "product_id": "fc5393ad-2418-4a19-bed9-d668d8f02306",
+    "related_product_id": "46f7ea03-fd5c-48a4-8bb2-48fc4d33ab12",
+    "relation_type": "similar"
+  },
+  {
+    "id": 21,
+    "product_id": "fc5393ad-2418-4a19-bed9-d668d8f02306",
+    "related_product_id": "39b161a9-5d0e-4ccb-b048-8adac07eeb80",
+    "relation_type": "similar"
+  },
+  {
+    "id": 22,
+    "product_id": "fc5393ad-2418-4a19-bed9-d668d8f02306",
+    "related_product_id": "8f745f86-03b1-4d55-ba5b-48b02cd1a54a",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 23,
+    "product_id": "fc5393ad-2418-4a19-bed9-d668d8f02306",
+    "related_product_id": "a87533eb-d685-4e08-8706-75391f252cdf",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 24,
+    "product_id": "fc5393ad-2418-4a19-bed9-d668d8f02306",
+    "related_product_id": "e7418031-5462-4441-8824-663b56c6e28a",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 25,
+    "product_id": "fc5393ad-2418-4a19-bed9-d668d8f02306",
+    "related_product_id": "571b9e38-67e7-4f45-a0a8-08f2f4acab15",
+    "relation_type": "recommended_with"
+  },
+  {
+    "id": 26,
+    "product_id": "fc5393ad-2418-4a19-bed9-d668d8f02306",
+    "related_product_id": "a87533eb-d685-4e08-8706-75391f252cdf",
+    "relation_type": "recommended_with"
+  },
+  {
+    "id": 27,
+    "product_id": "d1c7c928-5738-42ae-bba2-93abbc4e982f",
+    "related_product_id": "67819063-76a6-4095-b704-2a2785202c49",
+    "relation_type": "similar"
+  },
+  {
+    "id": 28,
+    "product_id": "d1c7c928-5738-42ae-bba2-93abbc4e982f",
+    "related_product_id": "f93e47be-3ffe-49f5-b019-c5707d7f6b6a",
+    "relation_type": "similar"
+  },
+  {
+    "id": 29,
+    "product_id": "d1c7c928-5738-42ae-bba2-93abbc4e982f",
+    "related_product_id": "e7418031-5462-4441-8824-663b56c6e28a",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 30,
+    "product_id": "d1c7c928-5738-42ae-bba2-93abbc4e982f",
+    "related_product_id": "46f7ea03-fd5c-48a4-8bb2-48fc4d33ab12",
+    "relation_type": "recommended_with"
+  },
+  {
+    "id": 31,
+    "product_id": "d1c7c928-5738-42ae-bba2-93abbc4e982f",
+    "related_product_id": "1061e89e-4d51-421c-9b6b-86b6f4b387af",
+    "relation_type": "recommended_with"
+  },
+  {
+    "id": 32,
+    "product_id": "f93e47be-3ffe-49f5-b019-c5707d7f6b6a",
+    "related_product_id": "d1c7c928-5738-42ae-bba2-93abbc4e982f",
+    "relation_type": "similar"
+  },
+  {
+    "id": 33,
+    "product_id": "f93e47be-3ffe-49f5-b019-c5707d7f6b6a",
+    "related_product_id": "67819063-76a6-4095-b704-2a2785202c49",
+    "relation_type": "similar"
+  },
+  {
+    "id": 34,
+    "product_id": "f93e47be-3ffe-49f5-b019-c5707d7f6b6a",
+    "related_product_id": "571b9e38-67e7-4f45-a0a8-08f2f4acab15",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 35,
+    "product_id": "f93e47be-3ffe-49f5-b019-c5707d7f6b6a",
+    "related_product_id": "571b9e38-67e7-4f45-a0a8-08f2f4acab15",
+    "relation_type": "recommended_with"
+  },
+  {
+    "id": 36,
+    "product_id": "67819063-76a6-4095-b704-2a2785202c49",
+    "related_product_id": "f93e47be-3ffe-49f5-b019-c5707d7f6b6a",
+    "relation_type": "similar"
+  },
+  {
+    "id": 37,
+    "product_id": "67819063-76a6-4095-b704-2a2785202c49",
+    "related_product_id": "d1c7c928-5738-42ae-bba2-93abbc4e982f",
+    "relation_type": "similar"
+  },
+  {
+    "id": 38,
+    "product_id": "67819063-76a6-4095-b704-2a2785202c49",
+    "related_product_id": "dc2ea37f-e341-43ae-8629-2a367713a9a2",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 39,
+    "product_id": "e7418031-5462-4441-8824-663b56c6e28a",
+    "related_product_id": "1bf06ade-a51c-46c4-b02d-1440b0dafc6f",
+    "relation_type": "similar"
+  },
+  {
+    "id": 40,
+    "product_id": "e7418031-5462-4441-8824-663b56c6e28a",
+    "related_product_id": "571b9e38-67e7-4f45-a0a8-08f2f4acab15",
+    "relation_type": "similar"
+  },
+  {
+    "id": 41,
+    "product_id": "e7418031-5462-4441-8824-663b56c6e28a",
+    "related_product_id": "9f2cfc23-7fc5-4cac-91d4-7d0b7638d5d9",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 42,
+    "product_id": "e7418031-5462-4441-8824-663b56c6e28a",
+    "related_product_id": "71e1342d-7e6d-43f8-8f49-8eeb5f69ea94",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 43,
+    "product_id": "e7418031-5462-4441-8824-663b56c6e28a",
+    "related_product_id": "67819063-76a6-4095-b704-2a2785202c49",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 44,
+    "product_id": "1bf06ade-a51c-46c4-b02d-1440b0dafc6f",
+    "related_product_id": "e7418031-5462-4441-8824-663b56c6e28a",
+    "relation_type": "similar"
+  },
+  {
+    "id": 45,
+    "product_id": "1bf06ade-a51c-46c4-b02d-1440b0dafc6f",
+    "related_product_id": "571b9e38-67e7-4f45-a0a8-08f2f4acab15",
+    "relation_type": "similar"
+  },
+  {
+    "id": 46,
+    "product_id": "1bf06ade-a51c-46c4-b02d-1440b0dafc6f",
+    "related_product_id": "9f2cfc23-7fc5-4cac-91d4-7d0b7638d5d9",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 47,
+    "product_id": "1bf06ade-a51c-46c4-b02d-1440b0dafc6f",
+    "related_product_id": "71e1342d-7e6d-43f8-8f49-8eeb5f69ea94",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 48,
+    "product_id": "1bf06ade-a51c-46c4-b02d-1440b0dafc6f",
+    "related_product_id": "dc2ea37f-e341-43ae-8629-2a367713a9a2",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 49,
+    "product_id": "571b9e38-67e7-4f45-a0a8-08f2f4acab15",
+    "related_product_id": "e7418031-5462-4441-8824-663b56c6e28a",
+    "relation_type": "similar"
+  },
+  {
+    "id": 50,
+    "product_id": "571b9e38-67e7-4f45-a0a8-08f2f4acab15",
+    "related_product_id": "1bf06ade-a51c-46c4-b02d-1440b0dafc6f",
+    "relation_type": "similar"
+  },
+  {
+    "id": 51,
+    "product_id": "571b9e38-67e7-4f45-a0a8-08f2f4acab15",
+    "related_product_id": "71e1342d-7e6d-43f8-8f49-8eeb5f69ea94",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 52,
+    "product_id": "571b9e38-67e7-4f45-a0a8-08f2f4acab15",
+    "related_product_id": "5734fb90-f43b-4c7f-ba57-759b239cedff",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 53,
+    "product_id": "571b9e38-67e7-4f45-a0a8-08f2f4acab15",
+    "related_product_id": "d1c7c928-5738-42ae-bba2-93abbc4e982f",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 54,
+    "product_id": "d87f1126-c558-4c26-828d-3f65fae5a72a",
+    "related_product_id": "a87533eb-d685-4e08-8706-75391f252cdf",
+    "relation_type": "similar"
+  },
+  {
+    "id": 55,
+    "product_id": "d87f1126-c558-4c26-828d-3f65fae5a72a",
+    "related_product_id": "8f745f86-03b1-4d55-ba5b-48b02cd1a54a",
+    "relation_type": "similar"
+  },
+  {
+    "id": 56,
+    "product_id": "d87f1126-c558-4c26-828d-3f65fae5a72a",
+    "related_product_id": "dc2ea37f-e341-43ae-8629-2a367713a9a2",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 57,
+    "product_id": "d87f1126-c558-4c26-828d-3f65fae5a72a",
+    "related_product_id": "fc5393ad-2418-4a19-bed9-d668d8f02306",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 58,
+    "product_id": "d87f1126-c558-4c26-828d-3f65fae5a72a",
+    "related_product_id": "1061e89e-4d51-421c-9b6b-86b6f4b387af",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 59,
+    "product_id": "8f745f86-03b1-4d55-ba5b-48b02cd1a54a",
+    "related_product_id": "d87f1126-c558-4c26-828d-3f65fae5a72a",
+    "relation_type": "similar"
+  },
+  {
+    "id": 60,
+    "product_id": "8f745f86-03b1-4d55-ba5b-48b02cd1a54a",
+    "related_product_id": "a87533eb-d685-4e08-8706-75391f252cdf",
+    "relation_type": "similar"
+  },
+  {
+    "id": 61,
+    "product_id": "8f745f86-03b1-4d55-ba5b-48b02cd1a54a",
+    "related_product_id": "46f7ea03-fd5c-48a4-8bb2-48fc4d33ab12",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 62,
+    "product_id": "8f745f86-03b1-4d55-ba5b-48b02cd1a54a",
+    "related_product_id": "dc2ea37f-e341-43ae-8629-2a367713a9a2",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 63,
+    "product_id": "8f745f86-03b1-4d55-ba5b-48b02cd1a54a",
+    "related_product_id": "84f7a720-ef6e-466c-b1be-06b9ec98615b",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 64,
+    "product_id": "a87533eb-d685-4e08-8706-75391f252cdf",
+    "related_product_id": "d87f1126-c558-4c26-828d-3f65fae5a72a",
+    "relation_type": "similar"
+  },
+  {
+    "id": 65,
+    "product_id": "a87533eb-d685-4e08-8706-75391f252cdf",
+    "related_product_id": "8f745f86-03b1-4d55-ba5b-48b02cd1a54a",
+    "relation_type": "similar"
+  },
+  {
+    "id": 66,
+    "product_id": "a87533eb-d685-4e08-8706-75391f252cdf",
+    "related_product_id": "46f7ea03-fd5c-48a4-8bb2-48fc4d33ab12",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 67,
+    "product_id": "a87533eb-d685-4e08-8706-75391f252cdf",
+    "related_product_id": "dc2ea37f-e341-43ae-8629-2a367713a9a2",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 68,
+    "product_id": "a87533eb-d685-4e08-8706-75391f252cdf",
+    "related_product_id": "84f7a720-ef6e-466c-b1be-06b9ec98615b",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 69,
+    "product_id": "1061e89e-4d51-421c-9b6b-86b6f4b387af",
+    "related_product_id": "8e08d47e-48a6-4f44-874e-c9861188fa5a",
+    "relation_type": "similar"
+  },
+  {
+    "id": 70,
+    "product_id": "1061e89e-4d51-421c-9b6b-86b6f4b387af",
+    "related_product_id": "84f7a720-ef6e-466c-b1be-06b9ec98615b",
+    "relation_type": "similar"
+  },
+  {
+    "id": 71,
+    "product_id": "1061e89e-4d51-421c-9b6b-86b6f4b387af",
+    "related_product_id": "8f745f86-03b1-4d55-ba5b-48b02cd1a54a",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 72,
+    "product_id": "8e08d47e-48a6-4f44-874e-c9861188fa5a",
+    "related_product_id": "1061e89e-4d51-421c-9b6b-86b6f4b387af",
+    "relation_type": "similar"
+  },
+  {
+    "id": 73,
+    "product_id": "8e08d47e-48a6-4f44-874e-c9861188fa5a",
+    "related_product_id": "84f7a720-ef6e-466c-b1be-06b9ec98615b",
+    "relation_type": "similar"
+  },
+  {
+    "id": 74,
+    "product_id": "8e08d47e-48a6-4f44-874e-c9861188fa5a",
+    "related_product_id": "8f745f86-03b1-4d55-ba5b-48b02cd1a54a",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 75,
+    "product_id": "84f7a720-ef6e-466c-b1be-06b9ec98615b",
+    "related_product_id": "8e08d47e-48a6-4f44-874e-c9861188fa5a",
+    "relation_type": "similar"
+  },
+  {
+    "id": 76,
+    "product_id": "84f7a720-ef6e-466c-b1be-06b9ec98615b",
+    "related_product_id": "1061e89e-4d51-421c-9b6b-86b6f4b387af",
+    "relation_type": "similar"
+  },
+  {
+    "id": 77,
+    "product_id": "84f7a720-ef6e-466c-b1be-06b9ec98615b",
+    "related_product_id": "71e1342d-7e6d-43f8-8f49-8eeb5f69ea94",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 78,
+    "product_id": "5734fb90-f43b-4c7f-ba57-759b239cedff",
+    "related_product_id": "71e1342d-7e6d-43f8-8f49-8eeb5f69ea94",
+    "relation_type": "similar"
+  },
+  {
+    "id": 79,
+    "product_id": "5734fb90-f43b-4c7f-ba57-759b239cedff",
+    "related_product_id": "9f2cfc23-7fc5-4cac-91d4-7d0b7638d5d9",
+    "relation_type": "similar"
+  },
+  {
+    "id": 80,
+    "product_id": "5734fb90-f43b-4c7f-ba57-759b239cedff",
+    "related_product_id": "571b9e38-67e7-4f45-a0a8-08f2f4acab15",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 81,
+    "product_id": "5734fb90-f43b-4c7f-ba57-759b239cedff",
+    "related_product_id": "1bf06ade-a51c-46c4-b02d-1440b0dafc6f",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 82,
+    "product_id": "5734fb90-f43b-4c7f-ba57-759b239cedff",
+    "related_product_id": "a87533eb-d685-4e08-8706-75391f252cdf",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 83,
+    "product_id": "9f2cfc23-7fc5-4cac-91d4-7d0b7638d5d9",
+    "related_product_id": "5734fb90-f43b-4c7f-ba57-759b239cedff",
+    "relation_type": "similar"
+  },
+  {
+    "id": 84,
+    "product_id": "9f2cfc23-7fc5-4cac-91d4-7d0b7638d5d9",
+    "related_product_id": "71e1342d-7e6d-43f8-8f49-8eeb5f69ea94",
+    "relation_type": "similar"
+  },
+  {
+    "id": 85,
+    "product_id": "9f2cfc23-7fc5-4cac-91d4-7d0b7638d5d9",
+    "related_product_id": "571b9e38-67e7-4f45-a0a8-08f2f4acab15",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 86,
+    "product_id": "9f2cfc23-7fc5-4cac-91d4-7d0b7638d5d9",
+    "related_product_id": "1bf06ade-a51c-46c4-b02d-1440b0dafc6f",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 87,
+    "product_id": "9f2cfc23-7fc5-4cac-91d4-7d0b7638d5d9",
+    "related_product_id": "a87533eb-d685-4e08-8706-75391f252cdf",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 88,
+    "product_id": "71e1342d-7e6d-43f8-8f49-8eeb5f69ea94",
+    "related_product_id": "9f2cfc23-7fc5-4cac-91d4-7d0b7638d5d9",
+    "relation_type": "similar"
+  },
+  {
+    "id": 89,
+    "product_id": "71e1342d-7e6d-43f8-8f49-8eeb5f69ea94",
+    "related_product_id": "5734fb90-f43b-4c7f-ba57-759b239cedff",
+    "relation_type": "similar"
+  },
+  {
+    "id": 90,
+    "product_id": "71e1342d-7e6d-43f8-8f49-8eeb5f69ea94",
+    "related_product_id": "e7418031-5462-4441-8824-663b56c6e28a",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 91,
+    "product_id": "71e1342d-7e6d-43f8-8f49-8eeb5f69ea94",
+    "related_product_id": "571b9e38-67e7-4f45-a0a8-08f2f4acab15",
+    "relation_type": "alternative"
+  },
+  {
+    "id": 92,
+    "product_id": "71e1342d-7e6d-43f8-8f49-8eeb5f69ea94",
+    "related_product_id": "84f7a720-ef6e-466c-b1be-06b9ec98615b",
+    "relation_type": "accessory"
+  },
+  {
+    "id": 93,
+    "product_id": "71e1342d-7e6d-43f8-8f49-8eeb5f69ea94",
+    "related_product_id": "a87533eb-d685-4e08-8706-75391f252cdf",
+    "relation_type": "recommended_with"
+  }
+]

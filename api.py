@@ -31,6 +31,8 @@ app.add_middleware(
 
 # Global orchestrator agent to avoid re-initialization costs
 _orchestrator = None
+# Products database integration
+_products_integration = None
 
 def get_orchestrator():
     """Singleton pattern to get or create orchestrator agent"""
@@ -40,6 +42,27 @@ def get_orchestrator():
         _orchestrator = OrchestratorAgent()
         _orchestrator.initialize()
     return _orchestrator
+
+async def setup_products_integration():
+    """Set up the products database integration"""
+    global _products_integration
+    if not _products_integration:
+        try:
+            from database.integration import setup_products_integration
+            logger.info("Setting up products database integration")
+            _products_integration = await setup_products_integration(app)
+        except Exception as e:
+            logger.error(f"Error setting up products integration: {str(e)}", exc_info=True)
+    return _products_integration
+
+@app.on_event("startup")
+async def startup_event():
+    """Initialize components on startup"""
+    # Initialize orchestrator
+    get_orchestrator()
+    # Set up products integration
+    await setup_products_integration()
+    logger.info("Application startup complete")
 
 @app.post("/chat")
 async def message(message_payload: MessagePayload):
@@ -103,6 +126,14 @@ async def message(message_payload: MessagePayload):
     except Exception as e:
         logger.error(f"Error processing message: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Error processing message: {str(e)}")
+
+# Include products database routes
+try:
+    from database.api import products_router
+    app.include_router(products_router)
+    logger.info("Products API routes included")
+except ImportError:
+    logger.warning("Could not import products_router, products API routes not available")
 
 
 
