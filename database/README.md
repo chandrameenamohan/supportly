@@ -57,7 +57,7 @@ psql supportly_shoes < schema.sql
 python seed_data.py
 
 # Load data into the database
-# (This will be added in a future update)
+python json_to_sql.py
 ```
 
 ## Integration with Products Agent
@@ -70,4 +70,51 @@ The products agent can use this database to look up relevant information before 
 4. Get related products
 5. Access customer reviews and ratings
 
-This enables the agent to provide accurate and detailed responses to customer inquiries about the shoe store's products. 
+This enables the agent to provide accurate and detailed responses to customer inquiries about the shoe store's products.
+
+## Components
+
+The following components work together to enable product database functionality:
+
+- `products_agent.py` - Main class that handles natural language queries about products
+- `products_repository.py` - Repository class that handles database interaction
+- `db_connection.py` - Database connection manager
+- `integration.py` - Integration with the main Supportly application
+- `products_agent_demo.py` - Demo script showing the agent functionality
+
+## Testing
+
+### Integration Tests
+
+The `tests/` directory contains comprehensive test cases for the product database functionality:
+
+- `test_products_agent.py` - Tests for the ProductsAgent class
+- `test_products_tool.py` - Tests for the ProductsTool class
+- `test_products_repository.py` - Tests for the ProductsRepository class
+- `test_api_and_integration.py` - Tests for API endpoints and integration
+- `test_main_application.py` - Tests for integration with the main application
+
+### Sample Tests
+
+Sample tests demonstrate how to test the product database functionality:
+
+- `test_main_application_sample.py` - Sample integration tests with clear examples
+- `run_sample_test.py` - Script to run sample tests with detailed output
+
+To run the sample tests:
+
+```bash
+# Run all sample tests
+python -m database.tests.run_sample_test
+
+# Run with verbose output
+python -m database.tests.run_sample_test -v
+
+# Run specific test
+python -m database.tests.run_sample_test -t TestProductsAgentSample.test_search_products
+
+# Show detailed help
+python -m database.tests.run_sample_test --help-more
+```
+
+For more details on testing, see the [tests/README.md](tests/README.md) file. 

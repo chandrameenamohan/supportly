@@ -172,15 +172,17 @@ class ProductsAgent:
         
         # Extract price range
         price_range_pattern = r'(?:between|from)\s*\$?(\d+)\s*(?:and|to|-)\s*\$?(\d+)'
+        min_price_pattern = r'(?:over|above|more than|min|minimum)\s*\$?(\d+)'
+        max_price_pattern = r'(?:under|below|less than|max|maximum)\s*\$?(\d+)'
+        color_pattern = r'(?:color|colour)\s*:\s*([a-zA-Z]+)|([a-zA-Z]+)\s+(?:color|colour)s?'
+        size_pattern = r'(?:size)\s*:\s*([a-zA-Z0-9.]+)|size\s+([a-zA-Z0-9.]+)'
+        
         match = re.search(price_range_pattern, query, re.IGNORECASE)
         if match:
             params["price_min"] = float(match.group(1))
             params["price_max"] = float(match.group(2))
         else:
             # Try to find min or max individually
-            min_price_pattern = r'(?:over|above|more than|min|minimum)\s*\$?(\d+)'
-            max_price_pattern = r'(?:under|below|less than|max|maximum)\s*\$?(\d+)'
-            
             min_match = re.search(min_price_pattern, query, re.IGNORECASE)
             if min_match:
                 params["price_min"] = float(min_match.group(1))
@@ -190,14 +192,12 @@ class ProductsAgent:
                 params["price_max"] = float(max_match.group(1))
         
         # Extract color
-        color_pattern = r'(?:color|colour)\s*:\s*([a-zA-Z]+)|([a-zA-Z]+)\s+(?:color|colour)s?'
         match = re.search(color_pattern, query, re.IGNORECASE)
         if match:
             color = match.group(1) if match.group(1) else match.group(2)
             params["color"] = color.strip()
         
         # Extract size
-        size_pattern = r'(?:size)\s*:\s*([a-zA-Z0-9.]+)|size\s+([a-zA-Z0-9.]+)'
         match = re.search(size_pattern, query, re.IGNORECASE)
         if match:
             size = match.group(1) if match.group(1) else match.group(2)
