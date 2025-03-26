@@ -8,6 +8,7 @@ from .knowledge_agent import KnowledgeAgent
 from .greeting_agent import GreetingAgent
 from .orders_agent import OrdersAgent
 from .products_agent import ProductsAgent
+from .reports_agent import ReportsAgent
 from textwrap import dedent
 from chat_models import ChatHistory, ChatMessage 
 from config import LLM_MODEL, LLM_VENDOR, DB_URL
@@ -30,6 +31,7 @@ class OrchestratorAgent(BaseAgent):
         self.greeting_agent = None
         self.orders_agent = None
         self.products_agent = None
+        self.reports_agent = None
         self.downstream_agents = {}
 
     def initialize(self) -> None:
@@ -45,6 +47,8 @@ class OrchestratorAgent(BaseAgent):
         self.orders_agent.initialize()
         self.products_agent = ProductsAgent()
         self.products_agent.initialize()
+        self.reports_agent = ReportsAgent()
+        self.reports_agent.initialize()
 
         self.downstream_agents = {
             'initial_greeting': self.greeting_agent,
@@ -52,6 +56,7 @@ class OrchestratorAgent(BaseAgent):
             'greeting': self.greeting_agent,
             'orders': self.orders_agent,
             'products': self.products_agent,
+            'reports': self.reports_agent,
             'other': self.knowledge_agent
         }
 
@@ -75,8 +80,17 @@ class OrchestratorAgent(BaseAgent):
             'greeting': "If the user is greeting the bot, introducing themselves, or making small talk",
             'orders': "If the user is asking about their order",
             'products': "If the user is asking about the products",
+            'reports': "If the user is asking for reports, analytics, inventory data, or business insights",
             'other': "If the user's intent is not clear from the message, or if the user is asking a question that doesn't fall into the other categories"
         }
+        
+        # Check for reports-related keywords
+        reports_keywords = ["report", "inventory", "analytics", "analysis", "statistics", "sales data", "price analysis"]
+        message_lower = message.lower()
+        for keyword in reports_keywords:
+            if keyword in message_lower:
+                logger.info(f"REPORTS KEYWORD DETECTED: '{keyword}' - Message: '{message[:50]}...'")
+                return 'reports'
         
         # Build the prompt with intent descriptions
         intent_options = "\n".join([f"- '{intent}': {desc}" for intent, desc in intent_descriptions.items()])

@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 """
-Integration module for the Supportly application.
-This module registers the products tool with the main Supportly application.
+Integration module for the products database.
+This module provides functionality to integrate the products agent and tool with the main application.
 """
 
 import logging
-from typing import Dict, Any, Callable, Awaitable, List, Optional
+import asyncio
+from typing import Dict, List, Any, Optional, Union, Tuple, Callable
 
-from .products_tool import ProductsTool, get_tool_description
+from .products_tool import ProductsTool
+from .products_repository import ProductsRepository
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -16,46 +18,30 @@ logger = logging.getLogger(__name__)
 class ProductsToolIntegration:
     """
     Integration class for the products tool.
-    Manages the lifecycle of the products tool and its registration with the application.
+    Provides functionality to register the tool with the main application.
     """
     
     def __init__(self):
-        """Initialize the integration."""
+        """Initialize the products tool integration."""
         self.tool = ProductsTool()
-        self.tool_description = get_tool_description()
-        logger.info("ProductsToolIntegration initialized")
+        logger.info("Products tool integration initialized")
     
-    async def register_with_app(self, register_tool_fn: Callable[[Dict, Callable], Any]) -> None:
+    async def register_with_app(self, register_tool_func: Callable):
         """
         Register the products tool with the application.
         
         Args:
-            register_tool_fn: Function to register the tool with the application
+            register_tool_func: Function to register the tool with the application
         """
-        # Define the executor function that will be called by the application
-        async def tool_executor(params: Dict) -> Dict:
-            """
-            Execute the products tool with the given parameters.
-            
-            Args:
-                params: Parameters for the tool execution
-                
-            Returns:
-                Result of the tool execution
-            """
-            action = params.get('action')
-            if not action:
-                return {
-                    "error": "No action specified",
-                    "response": "I need to know what action to perform with the products tool. Please specify an action."
-                }
-            
-            # Execute the tool with the provided parameters
-            result = await self.tool.execute(action, **params)
-            return result
+        from .products_tool import get_tool_description
         
-        # Register the tool with the application
-        register_tool_fn(self.tool_description, tool_executor)
+        # Register the tool
+        await register_tool_func(
+            "products",
+            self.tool.execute,
+            get_tool_description()
+        )
+        
         logger.info("Products tool registered with the application")
     
     @classmethod
@@ -67,6 +53,9 @@ class ProductsToolIntegration:
             app: The application to integrate with
         """
         integration = cls()
+        
+        # Initialize vector database
+        asyncio.create_task(cls._initialize_vector_database())
         
         # Check if the application has a register_tool method
         if hasattr(app, 'register_tool'):
@@ -87,16 +76,29 @@ class ProductsToolIntegration:
             logger.warning("Could not register API routes: No FastAPI instance found")
         
         return integration
+    
+    @classmethod
+    async def _initialize_vector_database(cls):
+        """Initialize the vector database."""
+        try:
+            # Initialize vector database
+            success = await ProductsRepository.initialize_vector_db()
+            if success:
+                logger.info("Vector database initialized during application startup")
+            else:
+                logger.error("Failed to initialize vector database during application startup")
+        except Exception as e:
+            logger.error(f"Error initializing vector database during application startup: {str(e)}")
 
-# Function to set up the integration with the application
-async def setup_products_integration(app) -> ProductsToolIntegration:
+# Public function to set up products integration with the application
+async def setup_products_integration(app=None):
     """
-    Set up the products tool integration with the application.
+    Set up the products integration with the application.
     
     Args:
         app: The application to integrate with
         
     Returns:
-        The integration instance
+        ProductsToolIntegration instance
     """
     return await ProductsToolIntegration.setup(app) 

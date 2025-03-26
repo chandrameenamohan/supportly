@@ -8,6 +8,7 @@ from .products_repository import ProductsRepository
 from .products_agent import ProductsAgent
 from .products_tool import ProductsTool, get_tool_description
 from .api import products_router
+from .vector_db import VectorDatabase
 
 __all__ = [
     'db',
@@ -15,5 +16,6 @@ __all__ = [
     'ProductsAgent',
     'ProductsTool',
     'get_tool_description',
-    'products_router'
+    'products_router',
+    'VectorDatabase'
 ] 

@@ -117,4 +117,110 @@ python -m database.tests.run_sample_test -t TestProductsAgentSample.test_search_
 python -m database.tests.run_sample_test --help-more
 ```
 
-For more details on testing, see the [tests/README.md](tests/README.md) file. 
+For more details on testing, see the [tests/README.md](tests/README.md) file.
+
+# Supportly Database Layer
+
+## Hybrid Search and Database Architecture
+
+This module implements a hybrid approach to database operations:
+
+1. **Vector Database (ChromaDB)** - For semantic search and natural language understanding
+2. **SQL Database** - For precise filtering, inventory management, and reporting
+
+## Why a Hybrid Approach?
+
+The hybrid approach leverages the strengths of both technologies:
+
+### Vector Database Strengths
+- **Natural Language Understanding**: Finds products based on semantic meaning, not just exact keywords
+- **Semantic Similarity**: Discovers products that are conceptually related even with different terminology 
+- **Fuzzy Matching**: Handles typos, synonyms, and concept-based queries
+- **Understanding Context**: Interprets the meaning behind search terms
+
+### SQL Database Strengths
+- **Precise Filtering**: Exact matches on structured attributes (price, brand, category, etc.)
+- **Complex Aggregations**: Efficiently calculates totals, averages, counts across many dimensions
+- **Reporting**: Generates detailed business reports with grouping and analytics
+- **Inventory Management**: Tracks exact stock counts, sizes, and availability
+- **Transaction Support**: Ensures data consistency for inventory changes
+
+## Implementation Details
+
+### Hybrid Search Implementation
+
+The hybrid search approach works in two stages:
+
+1. **Vector Search Phase**: Uses OpenAI embeddings to find semantically relevant products
+2. **SQL Filtering Phase**: Applies precise filters (price, size, etc.) to the candidate set
+
+This provides the best of both worlds - the natural language understanding of vector search with the precise filtering capabilities of SQL.
+
+Example: When a user searches for "comfortable running shoes under $100", the system:
+1. Uses vector search to find products related to "comfortable running shoes"
+2. Uses SQL to filter those results to only show items under $100
+
+### SQL Reporting Features
+
+SQL excels at complex analytical queries needed for business reporting:
+
+- **Inventory Reports**: Track stock levels, value, and distribution by category/brand
+- **Price Analysis**: Analyze pricing trends, discounts, and promotional effectiveness
+- **Most Discounted Products**: Find the best deals currently available
+- **Sales Performance**: Track product performance by various dimensions
+
+## API Endpoints
+
+### Search and Product Information
+- `POST /products/search` - Search products with flexible filtering
+- `POST /products/semantic-search` - Natural language search using vector database
+- `GET /products/details/{product_id}` - Get detailed product information
+
+### SQL-Based Reporting
+- `POST /products/reports/inventory` - Generate inventory reports
+- `POST /products/reports/price-analysis` - Generate price analysis
+- `GET /products/reports/most-discounted` - Find most discounted products
+
+## Fallback Mechanisms
+
+The system includes robust fallback mechanisms:
+- If vector search fails, the system falls back to keyword search
+- If SQL queries fail, the system uses in-memory data processing
+
+This ensures the application remains functional even if certain components are unavailable.
+
+## Architecture Diagram
+
+```
+┌──────────────────┐     ┌───────────────────┐     ┌─────────────────┐
+│  User Interface  │────▶│  Product Search   │────▶│  Vector Search  │
+└──────────────────┘     │    (Hybrid)       │     │  (Semantic)     │
+                         └─────────┬─────────┘     └─────────────────┘
+                                   │
+                                   ▼
+┌──────────────────┐     ┌───────────────────┐     ┌─────────────────┐
+│  Admin Reports   │◀────│  SQL Database     │◀────│  SQL Filtering  │
+└──────────────────┘     │  (Precise)        │     │  (Exact Match)  │
+                         └───────────────────┘     └─────────────────┘
+```
+
+## Best Practices for Extension
+
+When extending this system:
+
+1. Use vector search for:
+   - Natural language queries
+   - Concept-based search
+   - Recommendation systems
+   - Finding similar products
+
+2. Use SQL for:
+   - Exact attribute filtering
+   - Inventory management
+   - Analytics and reporting
+   - Transaction processing
+   - Complex grouping and aggregation
+
+3. Consider combining both in a pipeline:
+   - Vector search to find candidate products based on meaning
+   - SQL to apply precise business rules and filters 
