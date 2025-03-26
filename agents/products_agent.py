@@ -76,6 +76,25 @@ class ProductsAgent(BaseAgent):
         Returns:
             A dictionary of parameters for the products tool
         """
+        # Extract recent product context from chat history to handle follow-up questions
+        recent_product_id = None
+        recent_action = None
+        
+        # Look for recent product mentions in chat history
+        if chat_history and chat_history.messages:
+            # Scan the last few messages to find product context
+            recent_messages = chat_history.messages[-5:] if len(chat_history.messages) >= 5 else chat_history.messages
+            
+            for chat_msg in reversed(recent_messages):
+                if chat_msg.role in ["assistant", "ai"] and "availability" in chat_msg.content.lower():
+                    # Look for product name mentions in the AI's previous responses
+                    import re
+                    product_match = re.search(r'the\s+([^"]+?)\s+is\s+(?:not\s+)?available', chat_msg.content, re.IGNORECASE)
+                    if product_match:
+                        recent_product_id = product_match.group(1)
+                        recent_action = "availability"
+                        break
+        
         # Build a prompt to extract parameters
         extract_prompt = dedent(f"""
         You are tasked with extracting parameters from a user's message to search for shoes in our database.
@@ -98,9 +117,14 @@ class ProductsAgent(BaseAgent):
            - For 'details': Extract the product_id (if mentioned)
            - For 'availability': Extract product_id, size, and color
            - For 'category': Extract the category_name
+           
+        IMPORTANT: For follow-up questions about availability, look at the chat history to determine which product the user is referring to. If the current message only mentions size/color but not a product, and a product was mentioned in recent messages, use that product's name as the product_id.
+        
+        {'CONTEXT FROM PREVIOUS MESSAGES: The user previously asked about: ' + recent_product_id if recent_product_id else ''}
         
         Return your answer as a valid JSON object with the action and relevant parameters.
         For example: {{"action": "search", "query": "red nike running shoes"}}
+        For product availability follow-ups: {{"action": "availability", "product_id": "[PREVIOUSLY MENTIONED PRODUCT]", "size": "10", "color": "red"}}
         """)
         
         try:
@@ -117,6 +141,12 @@ class ProductsAgent(BaseAgent):
             
             # Parse the JSON
             params = json.loads(json_text.strip())
+            
+            # Ensure follow-up availability queries have a product_id
+            if params.get("action") == "availability" and not params.get("product_id") and recent_product_id:
+                logger.info(f"Using product from context: {recent_product_id}")
+                params["product_id"] = recent_product_id
+            
             logger.info(f"Extracted parameters: {params}")
             return params
         except Exception as e:

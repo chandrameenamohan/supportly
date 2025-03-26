@@ -129,11 +129,11 @@ async def message(message_payload: MessagePayload):
 
 # Include products database routes
 try:
-    from database.api import products_router
-    app.include_router(products_router)
-    logger.info("Products API routes included")
+    from database.api import init_api_routes
+    init_api_routes(app)
+    logger.info("API routes initialized")
 except ImportError:
-    logger.warning("Could not import products_router, products API routes not available")
+    logger.warning("Could not import database.api modules, API routes not available")
 
 
 
