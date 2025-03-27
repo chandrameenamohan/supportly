@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 import sys, os
 import asyncio
 from message_logger import get_message_logger
+from order_data import get_orders_db
 
 load_dotenv()
 DB_URL = os.getenv("DB_URL") or "sqlite+aiosqlite:///db.sqlite"
@@ -17,6 +18,8 @@ async def initialize_database():
     """
     logger = get_message_logger(DB_URL)
     await logger.initialize()
+    orders_db = await get_orders_db(DB_URL)
+    await orders_db.initialize()
 
 async def main():
     try:
