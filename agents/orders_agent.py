@@ -488,7 +488,10 @@ def get_order_details(order_id: str, customer_id: str = "CUST-001") -> str:
 def search_for_shoe_image(query):
     """
     Search for an image of shoes online using Tavily API and return the URL.
+<<<<<<< HEAD
     Tries to find medium-sized, web-friendly images.
+=======
+>>>>>>> main
     
     Args:
         query: The search term for the shoes
