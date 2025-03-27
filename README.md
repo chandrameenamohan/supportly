@@ -41,6 +41,9 @@ This creates a SQLite database in the project root, named db.sqlite.
 python initialize_db.py
 ```
 
+#### Generate fake order data
+Run the order_data/generate_fake_order_data.py from command line.
+
 ### 2. Frontend Setup
 
 #### Install NPM Dependencies
