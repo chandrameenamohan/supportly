@@ -1,21 +1,12 @@
-from datetime import datetime, timedelta, date
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Any
 from agents.base_agent import BaseAgent
 from agents.orders_prompt import ORDER_STATUS_AGENT_PROMPT
 from langgraph.graph import StateGraph, START, END, MessagesState
 from langgraph.prebuilt import create_react_agent
 from langchain.chat_models import init_chat_model
 from langchain_core.tools import tool
-from langchain_community.tools.tavily_search import TavilySearchResults
-from opik import Opik, track
-from opik.integrations.langchain import OpikTracer
-import calendar
-import pytz
-from dateutil.relativedelta import relativedelta
-from dateutil.parser import parse
-import holidays
-import ephem
 from chat_models import ChatMessage, ChatHistory
+from utils import naive_utcnow
 
 
 # Dummy asynchronous tool implementations.
@@ -88,9 +79,7 @@ class OrdersAgent(BaseAgent):
         self.llm = None
         self.agent = None
         self.tools = []
-        self.chat_history = []
         self.workflow = None
-        self.tracer = None
     
     def initialize(self) -> None:
         """Initialize components for the tool-using agent.
@@ -118,7 +107,6 @@ class OrdersAgent(BaseAgent):
         )
         workflow_builder.add_edge("postprocess", END)
         self.workflow = workflow_builder.compile()
-        self.tracer = OpikTracer(graph=self.workflow.get_graph(xray=True))
     
     def _create_tools(self) -> List[Any]:
         """Create and return the list of tools for the agent.
@@ -139,37 +127,40 @@ class OrdersAgent(BaseAgent):
         )
         return agent
     
-    def process_message(self, message: ChatMessage, chat_history: ChatHistory) -> ChatMessage:
+    async def process_message(self, message: ChatMessage, chat_history: ChatHistory) -> ChatMessage:
         """Process a message using the tool-using agent."""
         
         user_message = message.message
                 
         state = WorkflowState(messages=user_message)
-        result = self.workflow.invoke(state, config={"callbacks": [self.tracer]})
+        result = self.workflow.invoke(state)
+
+        ai_message = result["messages"]
         
         chat_message = ChatMessage(
-            message=result["response"],
+            message=ai_message[2].content,
             conversation_id=message.conversation_id,
             sender="ai",
-            chat_history=self.chat_history,
+            chat_history=chat_history,
+            created_at=naive_utcnow()
         )
-        
+          
         return chat_message
     
     def _preprocess_node(self, state: WorkflowState) -> WorkflowState:
         """Preprocess the message for the agent."""
         messages = state["messages"]
         # We only need to preprocess the latest message
-        user_query = messages[-1].content
+        user_query = messages
         
         # Don't modify the query with calculation-specific text
         # This was causing the agent to focus only on calculations
         preprocessed_query = user_query
         
         # Update the last message with preprocessed content
-        messages[-1].content = preprocessed_query
+        messages = preprocessed_query
         
-        return {"preprocessing_result": preprocessed_query, "messages": messages, "chat_history": state["chat_history"]}
+        return {"messages": messages}
     
     def _react_agent_node(self, state: WorkflowState) -> WorkflowState:
         """Run the agent for the agent."""
@@ -186,13 +177,12 @@ class OrdersAgent(BaseAgent):
             ]
         })
         
-        return {"messages": result["messages"], "chat_history": state["chat_history"]}
+        return {"messages": result["messages"]}
     
     def _postprocess_node(self, state: WorkflowState) -> WorkflowState:
         """Postprocess the message for the agent."""
-        agent_response = state["messages"][-1].content
-        final_answer = f"FINAL ANSWER: {agent_response}"
-        return {"final_result": final_answer, "chat_history": state["chat_history"]}
+        agent_response = state["messages"]
+        return {"response": agent_response}
     
     def _should_end(self, state: WorkflowState) -> str:
         """Check if the agent should end."""
