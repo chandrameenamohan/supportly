@@ -200,6 +200,33 @@ def run_order_agent(query: str, customer_id: str = "CUST-001"):
 if __name__ == "__main__":
     print("Welcome to the Order Management System! Type 'exit' to quit.")
     
+    # Initialize conversation history to maintain context between interactions
+    conversation_history = []
+    system_message = SystemMessage(content="""You are an e-commerce customer service assistant.
+    
+When a customer asks about their orders, use the get_recent_orders tool to fetch their recent orders.
+By default, show the latest 5 orders. If there are more orders, ask if they want to see more.
+
+When a customer wants to cancel an order, first check which order they want to cancel. 
+If they don't specify which order to cancel, ask them to provide the order ID.
+Then use the cancel_order tool with the order_id to attempt cancellation.
+
+The customer ID is automatically provided in the system.
+
+Respond to queries like:
+- "Order Status"
+- "What are my Orders"
+- "Give me latest orders"
+- "My Order"
+- "Cancel my order"
+""")
+    conversation_history.append(system_message)
+    
+    # Track the current order being discussed for context
+    current_order_context = None
+    # Track if we have multiple orders in context
+    multiple_orders_in_context = False
+    
     while True:
         query = input("\nHow can I help you with your orders? ")
         
@@ -208,11 +235,61 @@ if __name__ == "__main__":
             print("Thank you for using our service. Goodbye!")
             break
         
-        # Process the query and get response
-        response = reach_agent(query)
+        # Check for context-dependent queries and resolve references
+        query_lower = query.lower()
+        
+        # When cancellation is requested
+        if any(phrase in query_lower for phrase in ["cancel it", "cancel this order", "i want to cancel"]):
+            # Check if we have a specific order in context
+            if current_order_context and not multiple_orders_in_context:
+                # We have a specific order in context, so proceed with cancellation
+                query = f"cancel order {current_order_context}"
+                print(f"(I understand you want to cancel order {current_order_context})")
+            else:
+                # We don't have a specific order or have multiple orders in context
+                # Let the agent ask for clarification naturally
+                query = "I want to cancel an order but I'm not sure which one"
+        
+        # Add user message to conversation history
+        user_message = HumanMessage(content=f"{query} [Customer ID: CUST-001]")
+        conversation_history.append(user_message)
+        
+        # Process query with full conversation history
+        result = react_agent.invoke({"messages": conversation_history})
+        
+        # Extract the response and update conversation history
+        ai_messages = [msg for msg in result["messages"] if isinstance(msg, AIMessage)]
+        if ai_messages:
+            latest_ai_message = ai_messages[-1]
+            conversation_history.append(latest_ai_message)
         
         # Print the response
         print("\nResponse:")
-        for msg in response:
-            if not isinstance(msg, SystemMessage):
+        for msg in result["messages"]:
+            if not isinstance(msg, SystemMessage) and msg not in conversation_history[:-2]:  # Skip previously shown messages
                 print(f"{msg.type}: {msg.content}")
+        
+        # Update order context by checking if an order ID was mentioned
+        import re
+        
+        # Get recent orders - this indicates multiple orders are being shown
+        if "get_recent_orders" in query_lower or any(tool_msg.content.startswith("Found") for tool_msg in result["messages"] if hasattr(tool_msg, 'content')):
+            multiple_orders_in_context = True
+            current_order_context = None
+        
+        # Look for order IDs in the user's message
+        order_ids = re.findall(r'ORD-\d+', query)
+        if order_ids:
+            # User mentioned a specific order
+            current_order_context = order_ids[0]
+            multiple_orders_in_context = False
+        
+        # If user explicitly mentions an order number, update the context
+        if re.search(r'order (\d+)', query_lower):
+            order_num = re.search(r'order (\d+)', query_lower).group(1)
+            try:
+                order_num = int(order_num)
+                current_order_context = f"ORD-{order_num}"
+                multiple_orders_in_context = False
+            except ValueError:
+                pass
