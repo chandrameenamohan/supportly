@@ -488,6 +488,10 @@ def get_order_details(order_id: str, customer_id: str = "CUST-001") -> str:
 def search_for_shoe_image(query):
     """
     Search for an image of shoes online using Tavily API and return the URL.
+<<<<<<< HEAD
+    Tries to find medium-sized, web-friendly images.
+=======
+>>>>>>> main
     
     Args:
         query: The search term for the shoes
@@ -511,14 +515,14 @@ def search_for_shoe_image(query):
         client = TavilyClient(api_key=api_key)
         
         # Enhance query to improve image search results
-        # Extract brand name if present (assuming brand is the first word in query)
+        # Add size specifications to help find smaller, web-friendly images
         terms = query.split()
         if len(terms) >= 2:
             brand = terms[0]
             model = " ".join(terms[1:])
-            enhanced_query = f"{brand} {model} shoes official product photo"
+            enhanced_query = f"{brand} {model} shoes product photo medium size"
         else:
-            enhanced_query = f"{query} shoes official product photo"
+            enhanced_query = f"{query} shoes product photo medium size"
             
         print(f"Searching for: {enhanced_query}")
         
@@ -527,15 +531,27 @@ def search_for_shoe_image(query):
                                 include_images=True,
                                 search_depth="advanced")
         
-        # Check if we have any images in the response
+        # Check if we have any images in the response and filter large ones
         if response and 'images' in response and response['images']:
-            # Return the URL of the first image
+            # Basic heuristic: URLs with "thumb" or "small" or "medium" are typically smaller
+            # This is just a simple filter - not 100% reliable
+            for image_url in response['images']:
+                # Skip URLs that might be very large or contain "full" or "large" in the URL path
+                if any(term in image_url.lower() for term in ["full", "large", "original", "high-res"]):
+                    continue
+                
+                # Prefer URLs that contain terms suggesting smaller images
+                if any(term in image_url.lower() for term in ["thumb", "small", "medium", "preview", "product"]):
+                    print(f"Found preferred smaller image: {image_url}")
+                    return image_url
+            
+            # If no preferred smaller images, return the first one
             print(f"Found image: {response['images'][0]}")
             return response['images'][0]
         
-        # If no images were found, try a more generic search
+        # If no images were found, try a more generic search with size specifications
         if not (response and 'images' in response and response['images']):
-            backup_query = f"{query} shoes stock photo"
+            backup_query = f"{query} shoes product photo small size"
             print(f"No images found, trying backup query: {backup_query}")
             
             response = client.search(query=backup_query, 
@@ -557,6 +573,7 @@ def search_for_shoe_image(query):
 def show_shoe_image(product_id: str = None, product_name: str = None) -> str:
     """
     Fetch an image of shoes based on product ID or product name using Tavily search.
+    Tries to find web-friendly sized images that load quickly.
     """
     try:
         # First get product details from our database
@@ -577,6 +594,7 @@ def show_shoe_image(product_id: str = None, product_name: str = None) -> str:
         search_query = f"{product_name} {category} shoes"
         image_url = None
         try:
+            print(f"Searching for web-friendly images of {product_name}...")
             image_url = search_for_shoe_image(search_query)
         except Exception as e:
             print(f"Error searching for image: {str(e)}")
@@ -691,7 +709,8 @@ customer information, or specific item details, use the get_order_details tool.
 
 When a customer asks to see images or pictures of shoes, or asks what a product looks like,
 use the show_shoe_image tool to retrieve images of the shoes using Tavily search.
-The system will search the web for images of the requested shoes and provide a URL if found.
+The system will search the web for web-friendly sized images of the requested shoes and 
+provide a URL if found. We prioritize small to medium sized images that load quickly.
 If no images are found, a descriptive text will be provided instead.
 
 Note that to enable image search, the system requires a Tavily API key to be set.
