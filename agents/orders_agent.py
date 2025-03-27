@@ -1,30 +1,12 @@
-<<<<<<< HEAD
 from typing import Dict, List, Any
-=======
-from datetime import datetime, timedelta, date
-from typing import Dict, List, Optional, Any
->>>>>>> refs/remotes/origin/cm/orderstatus/first-interaction
 from agents.base_agent import BaseAgent
 from agents.orders_prompt import ORDER_STATUS_AGENT_PROMPT
 from langgraph.graph import StateGraph, START, END, MessagesState
 from langgraph.prebuilt import create_react_agent
 from langchain.chat_models import init_chat_model
 from langchain_core.tools import tool
-<<<<<<< HEAD
 from chat_models import ChatMessage, ChatHistory
 from utils import naive_utcnow
-=======
-from langchain_community.tools.tavily_search import TavilySearchResults
-from opik import Opik, track
-from opik.integrations.langchain import OpikTracer
-import calendar
-import pytz
-from dateutil.relativedelta import relativedelta
-from dateutil.parser import parse
-import holidays
-import ephem
-from chat_models import ChatMessage, ChatHistory
->>>>>>> refs/remotes/origin/cm/orderstatus/first-interaction
 
 
 # Dummy asynchronous tool implementations.
