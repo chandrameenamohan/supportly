@@ -36,7 +36,7 @@ class KnowledgeAgent(BaseAgent):
     async def process_message(self, message: ChatMessage, chat_history: ChatHistory = None) -> ChatMessage:
         
         user_prompt = message.message
-        
+        logger.info(f"Knowledge Agent - Logging User Prompt: '{user_prompt}...'")
         """
         Process the message using corrective RAG and return the response asynchronously.
         """
@@ -75,10 +75,11 @@ class KnowledgeAgent(BaseAgent):
 
             # Combine retrieved context
             context = "\n".join([doc.page_content for doc in docs])
-            logger.info(f"Logging context: '{context}...'")
+            logger.info(f"Knowledge Agent - Logging context: '{context}...'")
             prompt = prompt.format(question=query, context=context)
             response = self.llm.invoke(prompt).content
-            return {"question": query, "documents": docs, "response": response}
+            logger.info(f"Knowledge Agent - LLM responded as: '{response}...'")
+            return {"question": query, "documents": docs, "A": response}
 
         # === 3. Build LangGraph ===
         graph_builder = StateGraph(GraphState)
@@ -98,20 +99,21 @@ class KnowledgeAgent(BaseAgent):
         # === 4. Run Query ===
         if not user_prompt.strip():  
             user_prompt = "What is the refund policy?"
-        logger.info(f"Before invoking LLM: Query Message: '{user_prompt}...'")
+        logger.info(f"Knowledge Agent - Before invoking LLM: Query Message: '{user_prompt}...'")
         output = graph.invoke({"question": user_prompt})
-        
-        #doc_summary = output.get("documents", {})
+        logger.info(f"Knowledge Agent - After graph invoke: Output Structure: '{output}...'")
+        doc_response = ""
+        doc_response = output.get("A", None)
 
         # Extract page_content from each Document object
-        page_contents = [doc.page_content for doc in output['documents']]
-        doc_response = ""
-        for content in page_contents:
-            doc_response += f" {content} \n"
-        doc_response += " \n"
+        #page_contents = [doc.page_content for doc in output['documents']]
+        
+        #for content in page_contents:
+        #    doc_response += f" {content} \n"
+        #doc_response += " \n"
 
-        response_message = doc_response
-        logger.info(f"After invoking LLM - Message: '{response_message}...'")
+        #response_message = doc_response
+        logger.info(f"Knowledge Agent - After invoking LLM - Message: '{doc_response}...'")
         
 
         try:
@@ -119,7 +121,7 @@ class KnowledgeAgent(BaseAgent):
             # do some work.. return a chat message
             
             return ChatMessage(
-                message=response_message,
+                message=doc_response,
                 conversation_id=message.conversation_id,
                 sender="ai",
                 suggestions=[],
