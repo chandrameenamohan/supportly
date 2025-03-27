@@ -254,6 +254,74 @@ class OrdersDatabase:
             print(f"Database error in cancel_order: {str(e)}")
             return {"success": False, "message": "There was an error processing your request. Please try again later."}
 
+    def get_order_details(self, order_id, customer_id=None):
+        """Get detailed information about a specific order."""
+        try:
+            conn = self.get_connection()
+            cursor = conn.cursor()
+            
+            # Base query to get order details
+            query = """
+                SELECT o.order_id, o.date, o.status, o.total, o.customer_id,
+                       c.name as customer_name, c.email, c.address
+                FROM orders o
+                JOIN customers c ON o.customer_id = c.customer_id
+                WHERE o.order_id = ?
+            """
+            
+            params = [order_id]
+            
+            # If customer_id is provided, add it to the query
+            if customer_id:
+                query += " AND o.customer_id = ?"
+                params.append(customer_id)
+            
+            cursor.execute(query, params)
+            order = cursor.fetchone()
+            
+            if not order:
+                if customer_id:
+                    return {"success": False, "message": f"Order {order_id} not found for customer {customer_id}."}
+                else:
+                    return {"success": False, "message": f"Order {order_id} not found."}
+            
+            # Get items for this order
+            cursor.execute("""
+                SELECT p.name, oi.quantity, oi.price
+                FROM order_items oi
+                JOIN products p ON oi.product_id = p.product_id
+                WHERE oi.order_id = ?
+            """, (order_id,))
+            
+            items = []
+            for item in cursor.fetchall():
+                items.append({
+                    "name": item['name'],
+                    "quantity": item['quantity'],
+                    "price": item['price']
+                })
+            
+            # Format the result
+            result = {
+                "success": True,
+                "order": {
+                    "order_id": order['order_id'],
+                    "date": order['date'],
+                    "status": order['status'],
+                    "total": order['total'],
+                    "customer_id": order['customer_id'],
+                    "customer_name": order['customer_name'],
+                    "email": order['email'],
+                    "address": order['address'],
+                    "items": items
+                }
+            }
+            
+            return result
+        except Exception as e:
+            print(f"Database error in get_order_details: {str(e)}")
+            return {"success": False, "message": f"Error retrieving details for order {order_id}: {str(e)}"}
+
     def close_connections(self):
         """Close connection if it exists in current thread"""
         if hasattr(self.local, 'conn'):
@@ -302,6 +370,39 @@ def cancel_order(order_id: str, customer_id: str = "CUST-001") -> str:
         print(f"Error in cancel_order tool: {str(e)}")
         return "I'm sorry, I couldn't process your cancellation request at this time. Please try again later."
 
+# Add a new tool for getting order details
+@tool
+def get_order_details(order_id: str, customer_id: str = "CUST-001") -> str:
+    """
+    Get detailed information about a specific order, including customer details and delivery address.
+    """
+    try:
+        result = db.get_order_details(order_id, customer_id)
+        
+        if not result["success"]:
+            return result["message"]
+            
+        order = result["order"]
+        
+        # Format the response
+        response = f"Order Details for {order_id}:\n\n"
+        response += f"Date: {order['date']}\n"
+        response += f"Status: {order['status']}\n"
+        response += f"Customer: {order['customer_name']} (ID: {order['customer_id']})\n"
+        response += f"Email: {order['email']}\n"
+        response += f"Delivery Address: {order['address']}\n\n"
+        
+        response += "Items:\n"
+        for item in order['items']:
+            response += f"- {item['name']} (Qty: {item['quantity']}) - ${item['price']:.2f} each\n"
+            
+        response += f"\nTotal: ${order['total']:.2f}"
+        
+        return response
+    except Exception as e:
+        print(f"Error in get_order_details tool: {str(e)}")
+        return f"I'm sorry, I couldn't retrieve the details for order {order_id} at this time. Please try again later."
+
 # Define the agent state
 class AgentState(TypedDict):
     messages: Annotated[Sequence[BaseMessage], "Chat history"]
@@ -310,7 +411,7 @@ class AgentState(TypedDict):
 # Initialize the LLM and tools
 # llm = ChatOpenAI(temperature=0)
 llm = init_chat_model("gpt-4o", model_provider="openai")
-tools = [get_recent_orders, cancel_order]  # Update tools list
+tools = [get_recent_orders, cancel_order, get_order_details]  # Update tools list
 react_agent = create_react_agent(llm, tools)
 
 def classify_query(query: str) -> str:
@@ -342,11 +443,11 @@ class OrdersAgent(BaseAgent):
     def initialize(self):
         self.llm = LLMFactory.create_llm(LLM_MODEL, LLM_VENDOR)
         # Initialize the agent-specific LLM for ReAct pattern
-        self.agent_llm = init_chat_model("gpt-4o", model_provider="openai")
+        self.agent_llm = init_chat_model("gpt-4o-mini", model_provider="openai")
         
         # Use the global tool functions instead of class methods
         # This ensures proper tool registration
-        self.tools = [get_recent_orders, cancel_order]
+        self.tools = [get_recent_orders, cancel_order, get_order_details]
         self.react_agent = self.create_react_agent()
     
     def create_react_agent(self):
@@ -375,6 +476,9 @@ When a customer wants to cancel an order, first check which order they want to c
 If they don't specify which order to cancel, ask them to provide the order ID.
 Then use the cancel_order tool with the order_id to attempt cancellation.
 
+When a customer asks for specific details about an order, such as delivery address, 
+customer information, or specific item details, use the get_order_details tool.
+
 The customer ID is automatically provided in the system.
 
 Respond to queries like:
@@ -383,6 +487,9 @@ Respond to queries like:
 - "Give me latest orders"
 - "My Order"
 - "Cancel my order"
+- "Who is the customer for this order"
+- "What address was this delivered to"
+- "Show me details of order ORD-123"
 """
         lc_messages.append(SystemMessage(content=system_prompt))
         
@@ -492,6 +599,7 @@ Respond to queries like:
         if self.current_order_context:
             suggestions.append(f"Cancel order {self.current_order_context}")
             suggestions.append(f"Track order {self.current_order_context}")
+            suggestions.append(f"Show details for {self.current_order_context}")
         
         # If we have multiple orders in context, add general suggestions
         if self.multiple_orders_in_context:
