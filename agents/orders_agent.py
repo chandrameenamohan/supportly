@@ -1,6 +1,6 @@
 from typing import Dict, List, Any, Optional
 from agents.base_agent import BaseAgent
-from agents.orders_prompt import ORDER_STATUS_AGENT_PROMPT
+from agents.orders_prompt import ORDER_STATUS_AGENT_PROMPT, ORDER_STATUS_AGENT_PROMPT_V1, ORDER_STATUS_AGENT_PROMPT_V2
 from langgraph.graph import StateGraph, START, END
 from langgraph.graph import MessagesState
 from langgraph.prebuilt import create_react_agent
@@ -552,7 +552,7 @@ class OrdersAgent(BaseAgent):
                 return {**state, "messages": response["messages"]}
         
         # CASE 3: Default to standard agent processing
-        system_message = ORDER_STATUS_AGENT_PROMPT
+        system_message = ORDER_STATUS_AGENT_PROMPT_V2
         
         # Add context information if available
         context_info = []
@@ -674,15 +674,21 @@ class OrdersAgent(BaseAgent):
                 return f"Your order #{order_id[4:]} has not been shipped yet. Its current status is '{status}'. I'll update you when it ships with tracking information."
                 
         elif intent == "refund":
-            if status in ["Processing", "Payment Confirmed"]:
-                return (f"I've processed a refund request for Order #{order_id[4:]}.\n\n"
-                        f"Refund Reference: REF-{order_id[4:]}\n"
-                        f"Amount: Full order amount\n"
-                        f"Processing Time: 3-5 business days\n\n"
-                        f"You should receive an email confirmation shortly. Is there anything else you need help with?")
-            else:
-                return (f"For Order #{order_id[4:]} which has already been {status}, we'll need to process a return before issuing a refund.\n\n"
-                        f"Would you like me to initiate the return process for you?")
+            # Allow refund request processing regardless of status
+            if "refund" in message.lower() or "money back" in message.lower():
+                if status in ["Processing", "Payment Confirmed"]:
+                    return (f"I've processed a refund request for Order #{order_id[4:]}.\n\n"
+                            f"Refund Reference: REF-{order_id[4:]}\n"
+                            f"Amount: Full order amount\n"
+                            f"Processing Time: 3-5 business days\n\n"
+                            f"You should receive an email confirmation shortly. Is there anything else you need help with?")
+                else:
+                    return (f"I've initiated a return and refund request for your shipped Order #{order_id[4:]}.\n\n"
+                            f"Return Reference: RET-{order_id[4:]}\n"
+                            f"Refund Amount: Full order amount (${order_info.get('total_amount', 0):.2f})\n"
+                            f"Next Steps: You'll receive an email with a prepaid return shipping label shortly.\n"
+                            f"Processing Time: Your refund will be processed within 5-7 business days after we receive your returned items.\n\n"
+                            f"Would you like to tell me why you're requesting a refund? This helps us improve our products and service.")
                         
         elif intent == "return":
             return (f"I've initiated a return request for Order #{order_id[4:]}.\n\n"
