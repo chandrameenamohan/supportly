@@ -18,7 +18,7 @@ class GreetingAgent(BaseAgent):
         self.llm = LLMFactory.create_llm(LLM_MODEL, LLM_VENDOR)
     
     def _greeting_prompt(self, message: str, chat_history: ChatHistory) -> str:
-        prompt = dedent("""**You are a helpful customer support bot for Acme Show, Inc. An online retailer of shoes of all types.**
+        prompt = dedent("""**You are a helpful customer support bot for Acme Shoe Store, Inc. An online retailer of shoes of all types.**
                         ---
                         **Instructions:**
                         Greet the user with a friendly message.
@@ -41,6 +41,6 @@ class GreetingAgent(BaseAgent):
             message=response.content,
             conversation_id=message.conversation_id,
             sender="ai",
-            suggestions=[],
+            suggestions=None,
             created_at=naive_utcnow()
         )

@@ -65,7 +65,7 @@ class OrchestratorAgent(BaseAgent):
         This is a placeholder for now.
         TODO: return a list of suggestions for the user's next message.
         """
-        return ["Order status", "Product information", "Support request"]
+        return ["Show me my order history", "Show me Nike shoes", "Can I see the inventory report", "What is your shipping policy?", "What is your return policy?"]
     
     async def _classify_intent(self, message: str, chat_history: ChatHistory) -> str:
         """Classify the user's intent to determine which agent should handle it"""
@@ -78,9 +78,10 @@ class OrchestratorAgent(BaseAgent):
         # TODO: fine tune the agent descriptions to improve intent classification
         intent_descriptions = {
             'greeting': "If the user is greeting the bot, introducing themselves, or making small talk",
-            'orders': "If the user is asking about their order",
-            'products': "If the user is asking about the products",
+            'orders': "If the user has any question about their order, order status, order history, or order tracking, or order cancellation, or would like to see a picture of a shoe",
+            'products': """If the user is interested in browsing or purchasing shoes, or asking about shoe details, shoe availability, shoe sizing, shoe reviews, or shoe recommendations.""",
             'reports': "If the user is asking for reports, analytics, inventory data, or business insights",
+            'knowledge': "If the user is asking about company policies, terms, or return policy",
             'other': "If the user's intent is not clear from the message, or if the user is asking a question that doesn't fall into the other categories"
         }
         
