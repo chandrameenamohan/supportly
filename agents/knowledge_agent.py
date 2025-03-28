@@ -1,18 +1,18 @@
-from tkinter import END
 from .base_agent import BaseAgent
 from chat_models import ChatMessage, ChatHistory
-from typing import List, Dict, Any
+from typing import List
+from pathlib import Path
 from llm_factory import LLMFactory
 from utils import naive_utcnow
 import logging
 from config import LLM_MODEL, LLM_VENDOR
-from langchain_community.document_loaders import PyPDFLoader
-from langchain_core.vectorstores import InMemoryVectorStore
-from langchain_openai import OpenAIEmbeddings
-from langchain.chat_models import init_chat_model
 from langchain_core.prompts import PromptTemplate
 from langgraph.graph import StateGraph, START, END
 from typing import TypedDict
+import time
+from pypdf import PdfReader
+from chromadb import PersistentClient
+
 
 logger = logging.getLogger(__name__)
 
@@ -32,6 +32,55 @@ class KnowledgeAgent(BaseAgent):
         """Initialize the knowledge agent with required components"""
         # Initialize LLM / Agent / Vector store
         self.llm = LLMFactory.create_llm(LLM_MODEL, LLM_VENDOR)
+        data_dir = Path("RAG Dataset")
+        self.document_paths = list(data_dir.glob("*.pdf")) 
+        self.embeddings = LLMFactory.create_embeddings()
+        client = PersistentClient(path="./chroma_db")
+        try:
+            self.vector_store = client.get_collection("supportly")
+        except Exception as e:
+            self.vector_store = client.create_collection("supportly")
+
+    def retrieval(self, query: str) -> List[str]:
+        embedded_query = self.embeddings.embed_query(query)
+        results = self.vector_store.query(query_embeddings=embedded_query, n_results=5)
+        return results["documents"][0]
+
+    def load_and_process_documents(self) -> list[str]:
+        """Load and process OPM documents."""
+        chunks = []
+        for path in self.document_paths:
+            print("New document:")
+            with open(path, "rb") as f:
+                pdf_reader = PdfReader(f)
+                for page in pdf_reader.pages:
+                    print("New page:")
+                    text = page.extract_text()
+                    if len(text) < 100:  # Skip very short pages
+                        continue
+                        
+                    # Split into sentences and group them into chunks of ~1000 characters
+                    current_chunk = ""
+                    for sentence in text.split(". "):
+                        if len(current_chunk) + len(sentence) > 1000:
+                            if current_chunk:  # Only add non-empty chunks
+                                chunks.append(current_chunk.strip())
+                            current_chunk = sentence
+                        else:
+                            current_chunk += ". " + sentence if current_chunk else sentence
+                    
+                    if current_chunk:  # Add the last chunk
+                        chunks.append(current_chunk.strip())
+        
+        # Create embeddings and store in vector database in batches of 50
+        batch_size = 50
+        for i in range(0, len(chunks), batch_size):
+            print(f"Processing batch {i // batch_size + 1} of {len(chunks) // batch_size}")
+            batch_chunks = chunks[i:i + batch_size]
+            batch_vectors = self.embeddings.embed_documents(batch_chunks)
+            batch_ids = [f"id{j}" for j in range(i, i + len(batch_chunks))]
+            self.vector_store.add(documents=batch_chunks, embeddings=batch_vectors, ids=batch_ids)
+            time.sleep(10)
         
     async def process_message(self, message: ChatMessage, chat_history: ChatHistory = None) -> ChatMessage:
         
@@ -40,23 +89,12 @@ class KnowledgeAgent(BaseAgent):
         """
         Process the message using corrective RAG and return the response asynchronously.
         """
-        # chat_history = chat_history or ChatHistory(messages=[])
         
-        file_path = "RAG Dataset/FAQ.pdf"
-        loader = PyPDFLoader(file_path)
-        pages = []
-        async for page in loader.alazy_load():
-            pages.append(page)
-        vector_store = InMemoryVectorStore.from_documents(pages, OpenAIEmbeddings())
-        # Create a retriever object on the vector store
-        retriever = vector_store.as_retriever()
-        
-        #docs = retriever.invoke(question)
         # Define retrieval function
         def retrieve_documents(state: GraphState):
             """Retrieve documents based on query."""
             query = state["question"]
-            docs = retriever.invoke(query)
+            docs = self.retrieval(query)
             return {"question": query, "documents": docs}
 
         # Define LLM generation function
@@ -74,12 +112,12 @@ class KnowledgeAgent(BaseAgent):
             )
 
             # Combine retrieved context
-            context = "\n".join([doc.page_content for doc in docs])
+            context = "\n\n".join(docs)
             logger.info(f"Knowledge Agent - Logging context: '{context}...'")
             prompt = prompt.format(question=query, context=context)
             response = self.llm.invoke(prompt).content
             logger.info(f"Knowledge Agent - LLM responded as: '{response}...'")
-            return {"question": query, "documents": docs, "A": response}
+            return {"question": query, "documents": docs, "generated_answer": response}
 
         # === 3. Build LangGraph ===
         graph_builder = StateGraph(GraphState)
@@ -103,28 +141,15 @@ class KnowledgeAgent(BaseAgent):
         output = graph.invoke({"question": user_prompt})
         logger.info(f"Knowledge Agent - After graph invoke: Output Structure: '{output}...'")
         doc_response = ""
-        doc_response = output.get("A", None)
+        doc_response = output.get("generated_answer", None)
 
-        # Extract page_content from each Document object
-        #page_contents = [doc.page_content for doc in output['documents']]
-        
-        #for content in page_contents:
-        #    doc_response += f" {content} \n"
-        #doc_response += " \n"
-
-        #response_message = doc_response
         logger.info(f"Knowledge Agent - After invoking LLM - Message: '{doc_response}...'")
-        
-
         try:
-
-            # do some work.. return a chat message
-            
             return ChatMessage(
                 message=doc_response,
                 conversation_id=message.conversation_id,
                 sender="ai",
-                suggestions=[],
+                suggestions=None,
                 created_at=naive_utcnow()
             )
             
@@ -134,4 +159,3 @@ class KnowledgeAgent(BaseAgent):
                 message="I apologize, but I encountered an error while processing your request. Please try again or contact support if the issue persists.",
                 sender="ai",
             )
-    
