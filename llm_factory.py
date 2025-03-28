@@ -1,11 +1,14 @@
 from langchain.chat_models.base import BaseChatModel
 from langchain.chat_models.openai import ChatOpenAI
 from langchain.chat_models.anthropic import ChatAnthropic
-from langchain_openai import AzureChatOpenAI
+from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
+from langchain_openai import OpenAIEmbeddings
 from typing import Literal, List, Dict, Any, Optional, Union
 import os
 from langchain_core.messages import AIMessage, BaseMessage
 from langchain_core.outputs import ChatGeneration, ChatResult
+from langchain_core.embeddings import Embeddings
+from config import EMBEDDING_MODEL, LLM_MODEL, LLM_VENDOR, EMBEDDING_VENDOR
 
 class DummyLLM(BaseChatModel):
     """A dummy LLM that returns hardcoded responses for testing."""
@@ -29,6 +32,19 @@ class DummyLLM(BaseChatModel):
     def _identifying_params(self) -> Dict[str, Any]:
         """Return identifying parameters."""
         return {"model_name": "dummy"}
+
+
+class DummyEmbeddings(Embeddings):
+    """A dummy embeddings model that returns hardcoded responses for testing."""
+    
+    def embed_documents(self, texts: List[str]) -> List[List[float]]:
+        """Embed documents."""
+        return [[0.0] * 1536 for _ in texts]
+    
+    def embed_query(self, text: str) -> List[float]:
+        """Embed a query."""
+        return [0.0] * 1536
+        
 
 class LLMFactory:
     """
@@ -70,5 +86,19 @@ class LLMFactory:
                 timeout=None,
                 max_retries=2
             )
+        else:
+            raise ValueError(f"Unsupported vendor: {vendor}")
+    
+    def create_embeddings(model_name: str = EMBEDDING_MODEL, vendor: Literal["openai", "azure", "dummy"] = EMBEDDING_VENDOR) -> Embeddings:
+        if vendor == "openai":
+            return OpenAIEmbeddings(model=model_name)
+        elif vendor == "azure" \
+            and os.getenv("AZURE_OPENAI_EMBEDDING_ENDPOINT") \
+                and os.getenv("AZURE_OPENAI_API_KEY"):
+            return AzureOpenAIEmbeddings(model=model_name, 
+                                         azure_endpoint=os.getenv("AZURE_OPENAI_EMBEDDING_ENDPOINT"), 
+                                         openai_api_version=os.getenv("AZURE_OPENAI_EMBEDDING_VERSION"))
+        elif vendor == "dummy":
+            return DummyEmbeddings()
         else:
             raise ValueError(f"Unsupported vendor: {vendor}")

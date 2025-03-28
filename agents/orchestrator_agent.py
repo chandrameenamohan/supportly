@@ -4,14 +4,14 @@ from utils import naive_utcnow
 from message_logger import get_message_logger
 from llm_factory import LLMFactory
 from .base_agent import BaseAgent
+from textwrap import dedent
+from chat_models import ChatHistory, ChatMessage 
+from config import LLM_MODEL, LLM_VENDOR, DB_URL
 from .knowledge_agent import KnowledgeAgent
 from .greeting_agent import GreetingAgent
 from .orders_agent import OrdersAgent
 from .products_agent import ProductsAgent
 from .reports_agent import ReportsAgent
-from textwrap import dedent
-from chat_models import ChatHistory, ChatMessage 
-from config import LLM_MODEL, LLM_VENDOR, DB_URL
 
 logger = logging.getLogger(__name__)
 
