@@ -41,6 +41,12 @@ This creates a SQLite database in the project root, named db.sqlite.
 python initialize_db.py
 ```
 
+#### Initialize RAG Store
+This loads and processes documents in the rag store.
+```bash
+python initialize_vector_store.py
+```
+
 #### Generate fake order data
 Run the order_data/generate_fake_order_data.py from command line.
 
